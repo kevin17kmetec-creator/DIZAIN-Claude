@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Syncopate", sans-serif;
+  --font-logo: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-concrete-900: var(--bg-main);
+  --color-concrete-800: var(--bg-secondary);
+  --color-concrete-700: var(--bg-tertiary);
+  --color-concrete-100: var(--text-main);
+  --color-bg-main: var(--bg-main);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-main: var(--text-main);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border-color);
+}
+
+/* ------------------------------------------------------------------
+   TEME STRANI
+   Ena struktura, več videzov. Izbira se shrani v localStorage in se
+   nastavi kot data-theme (+ data-mode za minimalistično) na <html>.
+------------------------------------------------------------------- */
+:root,
+:root[data-theme="minimal"] {
+  --bg-main: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #141414;
+  --text-main: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #6b6b6b;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(255, 255, 255, 0.2);
+  --accent-color: #ffffff;
+  --noise-opacity: 0.04;
+  --glow: transparent;
+  --radius: 0.75rem;
+  --scanlines: 0;
+  --c1: #4ade80; --c2: #06b6d4; --c3: #a855f7; --c4: #ec4899; --c5: #f97316; --c6: #eab308;
+}
+
+:root[data-theme="minimal"][data-mode="light"] {
+  --bg-main: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e5e5e5;
+  --text-main: #050505;
+  --text-secondary: #525252;
+  --text-muted: #737373;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-color-hover: rgba(0, 0, 0, 0.2);
+  --accent-color: #050505;
+  --noise-opacity: 0.02;
+  --c1: #16a34a; --c2: #0891b2; --c3: #9333ea; --c4: #db2777; --c5: #ea580c; --c6: #ca8a04;
+}
+
+/* ARCADE: neonski igralni avtomat */
+:root[data-theme="arcade"] {
+  --font-sans: "VT323", monospace;
+  --font-display: "Press Start 2P", monospace;
+  --font-logo: "Press Start 2P", monospace;
+  --bg-main: #0b0720;
+  --bg-secondary: #130c33;
+  --bg-tertiary: #1e1250;
+  --text-main: #f4f1ff;
+  --text-secondary: #8fe9ff;
+  --text-muted: #8d7fd1;
+  --border-color: rgba(255, 43, 214, 0.45);
+  --border-color-hover: rgba(0, 240, 255, 0.8);
+  --accent-color: #00f0ff;
+  --noise-opacity: 0;
+  --glow: rgba(255, 43, 214, 0.7);
+  --radius: 0;
+  --scanlines: 1;
+  --c1: #39ff14; --c2: #00f0ff; --c3: #b967ff; --c4: #ff2bd6; --c5: #ff9f1c; --c6: #fff200;
+  font-size: 18px;
+}
+
+/* LUKSUZNI / EDITORIAL: revijalen, topel, serifen */
+:root[data-theme="editorial"] {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-logo: "Playfair Display", Georgia, serif;
+  --bg-main: #f4efe6;
+  --bg-secondary: #ebe4d6;
+  --bg-tertiary: #ddd3bf;
+  --text-main: #1c1a17;
+  --text-secondary: #5b544a;
+  --text-muted: #85796a;
+  --border-color: rgba(28, 26, 23, 0.18);
+  --border-color-hover: rgba(28, 26, 23, 0.4);
+  --accent-color: #8a5a2b;
+  --noise-opacity: 0.05;
+  --glow: transparent;
+  --radius: 0;
+  --scanlines: 0;
+  --c1: #5f7a4e; --c2: #3f6c7a; --c3: #7a4f7a; --c4: #a64b4b; --c5: #b5651d; --c6: #a08a2c;
+}
+
+/* RETRO TERMINAL: zeleno na črnem */
+:root[data-theme="terminal"] {
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "JetBrains Mono", ui-monospace, monospace;
+  --font-logo: "JetBrains Mono", ui-monospace, monospace;
+  --bg-main: #020b04;
+  --bg-secondary: #04140a;
+  --bg-tertiary: #072111;
+  --text-main: #3dff7a;
+  --text-secondary: #26b857;
+  --text-muted: #1f8a42;
+  --border-color: rgba(61, 255, 122, 0.28);
+  --border-color-hover: rgba(61, 255, 122, 0.7);
+  --accent-color: #3dff7a;
+  --noise-opacity: 0;
+  --glow: rgba(61, 255, 122, 0.55);
+  --radius: 0;
+  --scanlines: 1;
+  --c1: #3dff7a; --c2: #3dffd9; --c3: #9dff3d; --c4: #ffe83d; --c5: #ffb03d; --c6: #d4ff3d;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+body { font-family: var(--font-sans); }
+
+/* Šum brez zunanje odvisnosti */
+.bg-noise {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+::selection { background: var(--accent-color); color: var(--bg-main); }
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--border-color-hover);
+  color: transparent;
+}
+
+/* Globalni učinki po temah */
+.fx-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: var(--scanlines);
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.18) 0, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: multiply;
+}
+:root[data-theme="terminal"] .fx-vignette,
+:root[data-theme="arcade"] .fx-vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 59;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
+}
+
+:root[data-theme="arcade"] h1,
+:root[data-theme="arcade"] h2,
+:root[data-theme="arcade"] h3 { text-shadow: 0 0 10px var(--glow); line-height: 1.35; }
+:root[data-theme="arcade"] .font-display { letter-spacing: 0.02em !important; }
+:root[data-theme="arcade"] .font-display[class*="text-8xl"],
+:root[data-theme="arcade"] .font-display[class*="text-9xl"],
+:root[data-theme="arcade"] .font-display[class*="text-7xl"] { font-size: clamp(2rem, 7vw, 5rem) !important; }
+:root[data-theme="arcade"] .font-display[class*="text-6xl"] { font-size: clamp(1.6rem, 5vw, 3.5rem) !important; }
+:root[data-theme="arcade"] .font-display[class*="text-5xl"] { font-size: clamp(1.4rem, 4vw, 2.6rem) !important; }
+:root[data-theme="arcade"] .font-display[class*="text-4xl"] { font-size: clamp(1.2rem, 3vw, 2rem) !important; }
+:root[data-theme="arcade"] .font-display[class*="text-3xl"] { font-size: clamp(1rem, 2.4vw, 1.5rem) !important; }
+:root[data-theme="arcade"] .font-display[class*="text-2xl"] { font-size: 1rem !important; }
+:root[data-theme="arcade"] .font-display[class*="text-lg"],
+:root[data-theme="arcade"] .font-display[class*="text-xl"] { font-size: 0.8rem !important; }
+:root[data-theme="arcade"] .font-display[class*="text-sm"] { font-size: 0.6rem !important; }
+
+:root[data-theme="terminal"] h1,
+:root[data-theme="terminal"] h2,
+:root[data-theme="terminal"] h3 { text-shadow: 0 0 8px var(--glow); }
+:root[data-theme="terminal"] .font-display { letter-spacing: 0 !important; font-weight: 700; }
+:root[data-theme="terminal"] .font-display[class*="text-8xl"],
+:root[data-theme="terminal"] .font-display[class*="text-9xl"],
+:root[data-theme="terminal"] .font-display[class*="text-7xl"] { font-size: clamp(2.2rem, 7vw, 5.5rem) !important; }
+:root[data-theme="terminal"] .font-display[class*="text-6xl"] { font-size: clamp(2rem, 5.5vw, 4rem) !important; }
+
+:root[data-theme="editorial"] .font-display { letter-spacing: -0.01em !important; text-transform: none !important; font-weight: 600; }
+:root[data-theme="editorial"] .font-display[class*="text-8xl"],
+:root[data-theme="editorial"] .font-display[class*="text-9xl"] { font-size: clamp(3rem, 9vw, 7rem) !important; line-height: 1 !important; }
+:root[data-theme="editorial"] h1 em,
+:root[data-theme="editorial"] h2 em { font-style: italic; }
+
+/* Vsi zaobljeni robovi sledijo temi */
+.rounded-sm, .rounded, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl { border-radius: var(--radius) !important; }
+:root[data-theme="arcade"] .rounded-full:not(.keep-round),
+:root[data-theme="terminal"] .rounded-full:not(.keep-round),
+:root[data-theme="editorial"] .rounded-full:not(.keep-round) { border-radius: 0 !important; }
+
+/* Mrežni vzorec za arcade ozadje */
+:root[data-theme="arcade"] body {
+  background-image:
+    linear-gradient(rgba(255,43,214,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes caret-blink { 50% { opacity: 0; } }
+.caret::after { content: "▌"; margin-left: 0.15em; animation: caret-blink 1s steps(1) infinite; }
+@media (prefers-reduced-motion: reduce) { .caret::after { animation: none; } }
+
+/* Fokus za tipkovnico */
+:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
+
+/* Krogi v časovnici ostanejo okrogli le v minimalistični temi */
+:root[data-theme="arcade"], :root[data-theme="terminal"], :root[data-theme="editorial"] { --node-radius: 0; }
