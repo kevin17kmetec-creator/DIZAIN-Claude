@@ -17,7 +17,7 @@ const ThemePicker: React.FC = () => {
             key={id}
             role="radio"
             aria-checked={active}
-            onClick={() => setTheme(id)}
+            onClick={(e) => setTheme(id, { x: e.clientX, y: e.clientY })}
             className={`text-left p-5 border transition-all duration-300 ${
               active
                 ? 'border-[var(--text-main)] bg-[var(--text-main)]/5'

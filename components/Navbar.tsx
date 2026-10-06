@@ -6,6 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { ROUTES } from '../routes';
 import ThemeSwitcher from './ThemeSwitcher';
 import ThemePicker from './ThemePicker';
+import { PaletteButton } from './CommandPalette';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -91,6 +92,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="justify-self-end flex items-center gap-5 z-50 ml-auto md:ml-0">
+          <PaletteButton className="hidden lg:inline text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] border border-[var(--border-color)] px-2 py-1 hover:text-[var(--text-main)]" />
           <ThemeSwitcher />
 
           <div className="flex items-center gap-2">

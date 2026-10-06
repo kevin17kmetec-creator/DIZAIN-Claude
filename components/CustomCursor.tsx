@@ -30,30 +30,37 @@ const CustomCursor: React.FC = () => {
     };
   }, [cursorX, cursorY]);
 
-  const pixel = theme === 'arcade' || theme === 'terminal';
-  const color = theme === 'minimal' ? '#ffffff' : theme === 'editorial' ? '#ffffff' : 'var(--accent-color)';
-  const blend = theme === 'minimal' || theme === 'editorial' ? 'mix-blend-difference' : '';
+  // Brutalist ima polni kvadrat, arcade piksel z neonskim obročem, ostali klasično piko z obročem
+  if (theme === 'brutal') {
+    return (
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[100] border-2 border-black"
+        style={{ translateX: cursorX, translateY: cursorY, x: -14, y: -14, width: 28, height: 28, background: '#ffe500', borderRadius: 0 }}
+        animate={{ scale: isHovering ? 1.9 : 1, rotate: isHovering ? 45 : 0 }}
+        transition={{ duration: 0.15 }}
+      />
+    );
+  }
+
+  const pixel = theme === 'arcade';
+  const color = theme === 'arcade' ? 'var(--accent-color)' : '#ffffff';
+  const blend = theme === 'arcade' ? '' : 'mix-blend-difference';
 
   return (
     <>
       <motion.div
-        className={`keep-round fixed top-0 left-0 pointer-events-none z-[100] ${blend} ${pixel ? 'w-3 h-3' : 'w-4 h-4 rounded-full'}`}
-        style={{ translateX: cursorX, translateY: cursorY, x: pixel ? -6 : -8, y: pixel ? -6 : -8, background: color, borderRadius: pixel ? 0 : '9999px' }}
+        className={`fixed top-0 left-0 pointer-events-none z-[100] ${blend}`}
+        style={{ translateX: cursorX, translateY: cursorY, x: pixel ? -6 : -8, y: pixel ? -6 : -8, width: pixel ? 12 : 16, height: pixel ? 12 : 16, background: color, borderRadius: pixel ? 0 : 9999 }}
         animate={{ scale: isHovering ? 0.6 : 1 }}
         transition={{ duration: 0.2 }}
       />
       <motion.div
-        className={`keep-round fixed top-0 left-0 w-12 h-12 border pointer-events-none z-[99] ${blend}`}
+        className={`fixed top-0 left-0 border pointer-events-none z-[99] ${blend}`}
         style={{
-          translateX: cursorXSpring,
-          translateY: cursorYSpring,
-          x: -24,
-          y: -24,
-          borderColor: color,
-          borderRadius: pixel ? 0 : '9999px',
-          boxShadow: pixel ? `0 0 12px var(--glow)` : undefined,
+          translateX: cursorXSpring, translateY: cursorYSpring, x: -24, y: -24, width: 48, height: 48, borderColor: color,
+          borderRadius: pixel ? 0 : 9999, boxShadow: pixel ? '0 0 12px var(--glow)' : undefined,
         }}
-        animate={{ scale: isHovering ? 1.8 : 1, opacity: isHovering ? 0.5 : 1, rotate: theme === 'arcade' && isHovering ? 45 : 0 }}
+        animate={{ scale: isHovering ? 1.8 : 1, opacity: isHovering ? 0.5 : 1, rotate: pixel && isHovering ? 45 : 0 }}
         transition={{ duration: 0.2 }}
       />
     </>

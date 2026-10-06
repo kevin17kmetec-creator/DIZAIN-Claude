@@ -4,7 +4,7 @@
   --font-sans: "Manrope", sans-serif;
   --font-display: "Syncopate", sans-serif;
   --font-logo: "Montserrat", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
   --color-concrete-900: var(--bg-main);
   --color-concrete-800: var(--bg-secondary);
@@ -38,6 +38,7 @@
   --glow: transparent;
   --radius: 0.75rem;
   --scanlines: 0;
+  --page-pt: 8rem;
   --c1: #4ade80; --c2: #06b6d4; --c3: #a855f7; --c4: #ec4899; --c5: #f97316; --c6: #eab308;
 }
 
@@ -73,6 +74,7 @@
   --glow: rgba(255, 43, 214, 0.7);
   --radius: 0;
   --scanlines: 1;
+  --page-pt: 6.5rem;
   --c1: #39ff14; --c2: #00f0ff; --c3: #b967ff; --c4: #ff2bd6; --c5: #ff9f1c; --c6: #fff200;
   font-size: 18px;
 }
@@ -95,28 +97,30 @@
   --glow: transparent;
   --radius: 0;
   --scanlines: 0;
+  --page-pt: 3rem;
   --c1: #5f7a4e; --c2: #3f6c7a; --c3: #7a4f7a; --c4: #a64b4b; --c5: #b5651d; --c6: #a08a2c;
 }
 
-/* RETRO TERMINAL: zeleno na črnem */
-:root[data-theme="terminal"] {
-  --font-sans: "JetBrains Mono", ui-monospace, monospace;
-  --font-display: "JetBrains Mono", ui-monospace, monospace;
-  --font-logo: "JetBrains Mono", ui-monospace, monospace;
-  --bg-main: #020b04;
-  --bg-secondary: #04140a;
-  --bg-tertiary: #072111;
-  --text-main: #3dff7a;
-  --text-secondary: #26b857;
-  --text-muted: #1f8a42;
-  --border-color: rgba(61, 255, 122, 0.28);
-  --border-color-hover: rgba(61, 255, 122, 0.7);
-  --accent-color: #3dff7a;
+/* BRUTALIST: surovo, glasno, debele črte, rumena */
+:root[data-theme="brutal"] {
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Archivo Black", "Space Grotesk", sans-serif;
+  --font-logo: "Archivo Black", sans-serif;
+  --bg-main: #f1efe7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #ffe500;
+  --text-main: #0a0a0a;
+  --text-secondary: #2b2b2b;
+  --text-muted: #5e5e58;
+  --border-color: #0a0a0a;
+  --border-color-hover: #0a0a0a;
+  --accent-color: #ff3b1f;
   --noise-opacity: 0;
-  --glow: rgba(61, 255, 122, 0.55);
+  --glow: transparent;
   --radius: 0;
-  --scanlines: 1;
-  --c1: #3dff7a; --c2: #3dffd9; --c3: #9dff3d; --c4: #ffe83d; --c5: #ffb03d; --c6: #d4ff3d;
+  --scanlines: 0;
+  --page-pt: 7rem;
+  --c1: #00c853; --c2: #00b8d4; --c3: #7c4dff; --c4: #ff2d95; --c5: #ff6d00; --c6: #ffd600;
 }
 
 html, body {
@@ -126,8 +130,7 @@ html, body {
   padding: 0;
   background-color: var(--bg-main);
   color: var(--text-main);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-x: clip;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 html { scroll-behavior: smooth; }
@@ -162,11 +165,6 @@ body { font-family: var(--font-sans); }
   background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.18) 0, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
   mix-blend-mode: multiply;
 }
-:root[data-theme="terminal"] .fx-vignette,
-:root[data-theme="arcade"] .fx-vignette {
-  position: fixed; inset: 0; pointer-events: none; z-index: 59;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
-}
 
 :root[data-theme="arcade"] h1,
 :root[data-theme="arcade"] h2,
@@ -184,14 +182,6 @@ body { font-family: var(--font-sans); }
 :root[data-theme="arcade"] .font-display[class*="text-xl"] { font-size: 0.8rem !important; }
 :root[data-theme="arcade"] .font-display[class*="text-sm"] { font-size: 0.6rem !important; }
 
-:root[data-theme="terminal"] h1,
-:root[data-theme="terminal"] h2,
-:root[data-theme="terminal"] h3 { text-shadow: 0 0 8px var(--glow); }
-:root[data-theme="terminal"] .font-display { letter-spacing: 0 !important; font-weight: 700; }
-:root[data-theme="terminal"] .font-display[class*="text-8xl"],
-:root[data-theme="terminal"] .font-display[class*="text-9xl"],
-:root[data-theme="terminal"] .font-display[class*="text-7xl"] { font-size: clamp(2.2rem, 7vw, 5.5rem) !important; }
-:root[data-theme="terminal"] .font-display[class*="text-6xl"] { font-size: clamp(2rem, 5.5vw, 4rem) !important; }
 
 :root[data-theme="editorial"] .font-display { letter-spacing: -0.01em !important; text-transform: none !important; font-weight: 600; }
 :root[data-theme="editorial"] .font-display[class*="text-8xl"],
@@ -202,8 +192,19 @@ body { font-family: var(--font-sans); }
 /* Vsi zaobljeni robovi sledijo temi */
 .rounded-sm, .rounded, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl { border-radius: var(--radius) !important; }
 :root[data-theme="arcade"] .rounded-full:not(.keep-round),
-:root[data-theme="terminal"] .rounded-full:not(.keep-round),
-:root[data-theme="editorial"] .rounded-full:not(.keep-round) { border-radius: 0 !important; }
+:root[data-theme="editorial"] .rounded-full:not(.keep-round),
+:root[data-theme="brutal"] .rounded-full:not(.keep-round) { border-radius: 0 !important; }
+
+:root[data-theme="arcade"] .fx-vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 59;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
+}
+
+/* Brutalist: debele obrobe na skupnih komponentah, trdi odmik senc */
+:root[data-theme="brutal"] .font-display { text-transform: uppercase; letter-spacing: -0.02em !important; line-height: 0.95; }
+:root[data-theme="brutal"] [class*="border-[var(--border-color)]"] { border-width: 2px; }
+:root[data-theme="brutal"] [class*="shadow-2xl"] { box-shadow: 6px 6px 0 0 #0a0a0a !important; }
+
 
 /* Mrežni vzorec za arcade ozadje */
 :root[data-theme="arcade"] body {
@@ -221,4 +222,61 @@ body { font-family: var(--font-sans); }
 :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
 /* Krogi v časovnici ostanejo okrogli le v minimalistični temi */
-:root[data-theme="arcade"], :root[data-theme="terminal"], :root[data-theme="editorial"] { --node-radius: 0; }
+:root[data-theme="arcade"], :root[data-theme="brutal"], :root[data-theme="editorial"] { --node-radius: 0; }
+
+/* ------------------------------------------------------------------
+   SKUPNE POMOŽNE KLASE
+------------------------------------------------------------------- */
+.page-top { padding-top: var(--page-pt, 8rem); }
+@media (max-width: 767px) {
+  :root[data-theme="editorial"] { --page-pt: 2rem; }
+  :root[data-theme="brutal"] { --page-pt: 6rem; }
+}
+
+.hard-shadow { box-shadow: 6px 6px 0 0 #0a0a0a; }
+.hard-shadow-sm { box-shadow: 3px 3px 0 0 #0a0a0a; }
+.hard-shadow-lg { box-shadow: 10px 10px 0 0 #0a0a0a; }
+
+.stroke-text { -webkit-text-stroke: 2px var(--text-main); color: transparent; }
+
+/* Marquee */
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  animation: marquee var(--marquee-d, 30s) linear infinite;
+  animation-direction: var(--marquee-dir, normal);
+}
+@keyframes marquee { to { transform: translateX(-100%); } }
+.marquee:hover .marquee-group { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .marquee-group { animation: none; } }
+
+/* Krožni prehod med temami */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0)); animation: vt-reveal 0.9s cubic-bezier(0.7, 0, 0.2, 1) forwards; }
+@keyframes vt-reveal { to { clip-path: circle(160% at var(--vt-x, 50%) var(--vt-y, 0)); } }
+@media (prefers-reduced-motion: reduce) { ::view-transition-new(root) { animation-duration: 0.01s; } }
+
+/* Piksli in igralni elementi */
+.pixel-box { border: 4px solid var(--border-color-hover); box-shadow: 4px 4px 0 0 var(--border-color), inset 0 0 0 2px var(--bg-main); background: var(--bg-secondary); }
+.pixel-btn { image-rendering: pixelated; border: 4px solid var(--text-main); box-shadow: 4px 4px 0 0 var(--border-color); }
+.pixel-btn:active { transform: translate(4px, 4px); box-shadow: none; }
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s steps(1) infinite; }
+@media (prefers-reduced-motion: reduce) { .blink { animation: none; } }
+.crt-screen { position: relative; overflow: hidden; }
+.crt-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.25) 0, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px); }
+
+/* Uredniški slog */
+.dropcap::first-letter { font-family: var(--font-display); float: left; font-size: 5.2em; line-height: 0.82; padding: 0.06em 0.1em 0 0; color: var(--accent-color); }
+.columns-2-balanced { column-count: 2; column-gap: 2.5rem; column-rule: 1px solid var(--border-color); }
+@media (max-width: 767px) { .columns-2-balanced { column-count: 1; } }
+.leader { flex: 1; border-bottom: 1px dotted var(--text-muted); margin: 0 0.5rem 0.35em; min-width: 1rem; }
+.double-rule { border-top: 3px double var(--text-main); }
+
+/* Brez zaobljenih robov v ne-minimalnih temah za kroge, ki so namenoma okrogli */
+
+@keyframes gridmove { to { background-position-y: 60px; } }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; } }

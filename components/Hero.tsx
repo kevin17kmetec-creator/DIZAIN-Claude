@@ -2,15 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useTheme } from '../contexts/ThemeContext';
+import Magnetic from './fx/Magnetic';
 import { ROUTES } from '../routes';
-
-const KICKERS = {
-  minimal: '',
-  arcade: '▶ PRESS START',
-  editorial: 'Maribor · Slovenija',
-  terminal: '$ ./dizain --build',
-} as const;
 
 const RotatingWord: React.FC<{ words: string[] }> = ({ words }) => {
   const [i, setI] = useState(0);
@@ -50,13 +43,10 @@ const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
   const { t } = useLanguage();
-  const { theme } = useTheme();
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
-
-  const kicker = KICKERS[theme];
 
   return (
     <section ref={containerRef} className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-[var(--bg-main)] transition-colors duration-500">
@@ -78,8 +68,6 @@ const Hero: React.FC = () => {
               backgroundImage: `url('https://wki1ffjfu2uulznl.public.blob.vercel-storage.com/DizainLogo_webp.webp')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              filter: theme === 'editorial' ? 'invert(1) sepia(0.4)' : theme === 'terminal' ? 'grayscale(1) sepia(1) hue-rotate(60deg) saturate(3)' : theme === 'arcade' ? 'hue-rotate(250deg) saturate(1.6)' : undefined,
-              opacity: theme === 'editorial' ? 0.35 : undefined,
             }}
           ></div>
         </div>
@@ -91,17 +79,6 @@ const Hero: React.FC = () => {
       <motion.div style={{ y, opacity }} className="container mx-auto px-6 z-10 flex flex-col items-center relative min-h-[100svh]">
         <div className="absolute bottom-10 left-0 right-0 flex flex-col items-center justify-end z-30 px-4">
           <h1 className="sr-only">DIZAIN - Izdelava spletnih strani, spletnih trgovin in aplikacij</h1>
-
-          {kicker && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className={`mb-5 text-xs tracking-[0.3em] uppercase text-[var(--accent-color)] ${theme === 'arcade' ? 'animate-pulse' : ''} ${theme === 'terminal' ? 'caret' : ''}`}
-            >
-              {kicker}
-            </motion.p>
-          )}
 
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
@@ -130,12 +107,14 @@ const Hero: React.FC = () => {
             transition={{ delay: 1.4, duration: 1 }}
             className="mt-8 flex flex-col sm:flex-row items-center gap-4"
           >
-            <Link
-              to={ROUTES.contact}
-              className="inline-flex items-center justify-center px-10 py-4 font-display text-xs tracking-widest text-[var(--bg-main)] bg-[var(--text-main)] border border-[var(--text-main)] hover:bg-transparent hover:text-[var(--text-main)] transition-colors duration-300 font-bold"
-            >
-              {t.hero.cta}
-            </Link>
+            <Magnetic>
+              <Link
+                to={ROUTES.contact}
+                className="inline-flex items-center justify-center px-10 py-4 font-display text-xs tracking-widest text-[var(--bg-main)] bg-[var(--text-main)] border border-[var(--text-main)] hover:bg-transparent hover:text-[var(--text-main)] transition-colors duration-300 font-bold"
+              >
+                {t.hero.cta}
+              </Link>
+            </Magnetic>
             <Link
               to={ROUTES.demo}
               className="inline-flex items-center justify-center px-10 py-4 font-display text-xs tracking-widest text-[var(--text-main)] border border-[var(--border-color-hover)] bg-[var(--bg-main)]/60 backdrop-blur-md hover:border-[var(--text-main)] transition-colors duration-300"

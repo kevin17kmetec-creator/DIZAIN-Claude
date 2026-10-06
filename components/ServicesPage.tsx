@@ -4,55 +4,22 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { ROUTES } from '../routes';
-import { Layers, Zap, PenTool, Monitor, Database, LayoutTemplate } from 'lucide-react';
+import { Database, LayoutTemplate } from 'lucide-react';
 import Pricing from './Pricing';
+import PageHeader from './PageHeader';
+import ServiceList from './ServiceList';
 import Faq from './Faq';
-
-const icons = [Layers, PenTool, Monitor, Zap];
 
 const ServicesPage: React.FC = () => {
   const { t } = useLanguage();
   usePageMeta(t.meta.services.title, t.meta.services.description);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-main)] pt-32 pb-24 relative overflow-hidden transition-colors duration-500">
+    <div className="min-h-screen bg-[var(--bg-main)] page-top pb-24 relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} className="mb-32 border-b border-[var(--border-color)] pb-12">
-          <h1 className="font-display text-5xl md:text-9xl font-bold uppercase text-[var(--text-main)] mb-8 tracking-tight leading-[0.85] break-words">{t.nav.services}</h1>
-          <p className="text-[var(--text-secondary)] text-xl md:text-2xl max-w-2xl leading-relaxed">{t.services.expertise}</p>
-        </motion.div>
+        <PageHeader title={t.nav.services} kicker={t.services.expertise} lead={t.services.expertise} index={2} />
 
-        <div className="flex flex-col mb-32">
-          {t.services.items.map((service, index) => {
-            const Icon = icons[index];
-            return (
-              <motion.div
-                key={service}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.8, delay: index * 0.05 }}
-                className="group relative border-t border-[var(--border-color)] py-16 md:py-24 transition-all duration-500 hover:bg-[var(--text-main)]/[0.03]"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  <div className="lg:col-span-1">
-                    <span className="font-mono text-sm md:text-base text-[var(--text-muted)] group-hover:text-[var(--text-main)] transition-colors duration-300">(0{index + 1})</span>
-                  </div>
-                  <div className="lg:col-span-6">
-                    <h3 className="text-3xl md:text-6xl font-display font-bold text-[var(--text-main)] uppercase tracking-tighter break-words">{service}</h3>
-                  </div>
-                  <div className="lg:col-span-5 pl-0 lg:pl-12 border-l-0 lg:border-l border-[var(--border-color)]">
-                    <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed group-hover:text-[var(--text-main)] transition-colors duration-300">{t.services.descriptions[index]}</p>
-                  </div>
-                </div>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none" aria-hidden="true">
-                  <Icon className="w-64 h-64 md:w-96 md:h-96 text-[var(--text-main)] rotate-12" />
-                </div>
-              </motion.div>
-            );
-          })}
-          <div className="w-full h-[1px] bg-[var(--border-color)]"></div>
-        </div>
+        <ServiceList />
 
         {/* CMS */}
         <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="mb-32 relative rounded-3xl overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-color)]">

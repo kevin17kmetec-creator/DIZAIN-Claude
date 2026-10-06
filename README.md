@@ -24,6 +24,21 @@ Project > Settings > Environment Variables (Production in Preview):
 
 Ključev ni v kodi. `.env*` je v `.gitignore` (razen `.env.example`). Po spremembi spremenljivk je potreben nov deploy.
 
+## Teme (štiri popolnoma različne strani)
+
+Vsaka tema ima svojo lupino (navigacija, okvir, noga) in svojo domačo stran. Podstrani si delijo vsebino, a vsaka tema ima svoj naslovni del, seznam referenc, storitve in cenik.
+
+| Tema | Ideja |
+| --- | --- |
+| Minimalistično | zgornja vrstica, središčna postavitev, temno/svetlo |
+| Arcade | HUD s točkami, spodnji dok (tipke 1-5), izbira nivojev, kasete, mini igra Breakout, zvok (privzeto izklopljen) |
+| Luksuzno | revija: žig, kazalo, stolpci, vodoravno drsenje poglavij, pismo uredništvu |
+| Brutalistično | navpični trak, lepljive kartice, trakovi, premakljive nalepke |
+
+Skupne funkcije: iskalnik `Ctrl/Cmd + K` (ali `/`), krožni prehod med temami (View Transitions), skrivnost Konami koda.
+
+Nova tema: mapa `themes/<ime>/` z `Shell.tsx`, `Home.tsx`, `index.ts`, vpis v `themes/registry.ts`, `ThemeContext.tsx`, `translations.ts` in barvni žetoni v `index.css`.
+
 ## Struktura
 
 - `contexts/` teme (minimal, arcade, luksuzno, retro terminal), jezik (SL/EN), `translations.ts`

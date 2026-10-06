@@ -5,6 +5,7 @@ import { Palette, SlidersHorizontal, ShoppingBag } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import ThemePicker from './ThemePicker';
+import PageHeader from './PageHeader';
 import Configurator from './demo/Configurator';
 import Shop from './demo/Shop';
 
@@ -23,14 +24,9 @@ const DemoPage: React.FC = () => {
   const tab: Tab = raw === 'configurator' || raw === 'shop' ? raw : 'style';
 
   return (
-    <div className="min-h-screen bg-[var(--bg-main)] pt-32 pb-24 relative overflow-hidden transition-colors duration-500">
+    <div className="min-h-screen bg-[var(--bg-main)] page-top pb-24 relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-16">
-          <div className="text-xs font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-6">{t.demo.kicker}</div>
-          <h1 className="font-display text-5xl md:text-8xl font-bold uppercase text-[var(--text-main)] mb-6 break-words">{t.demo.title}</h1>
-          <div className="w-24 h-1 bg-[var(--text-main)] mb-8" />
-          <p className="text-[var(--text-secondary)] text-xl max-w-2xl leading-relaxed">{t.demo.lead}</p>
-        </motion.div>
+        <PageHeader title={t.demo.title} kicker={t.demo.kicker} lead={t.demo.lead} index={3} />
 
         <div role="tablist" aria-label={t.demo.title} className="flex flex-wrap gap-2 mb-12 border-b border-[var(--border-color)]">
           {TABS.map(({ id, icon: Icon }) => (

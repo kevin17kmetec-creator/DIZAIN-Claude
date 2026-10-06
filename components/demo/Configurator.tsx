@@ -116,7 +116,7 @@ const Configurator: React.FC = () => {
               {THEME_IDS.map((id) => (
                 <button
                   key={id}
-                  onClick={() => setTheme(id)}
+                  onClick={(e) => setTheme(id, { x: e.clientX, y: e.clientY })}
                   aria-pressed={theme === id}
                   className={`flex items-center gap-3 px-4 py-3 border transition-all ${theme === id ? 'border-[var(--text-main)] bg-[var(--text-main)]/5' : 'border-[var(--border-color)] hover:border-[var(--border-color-hover)]'}`}
                 >

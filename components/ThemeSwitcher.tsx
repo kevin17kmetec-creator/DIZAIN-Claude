@@ -8,7 +8,7 @@ export const THEME_SWATCH: Record<ThemeId, string[]> = {
   minimal: ['#050505', '#ffffff', '#a3a3a3'],
   arcade: ['#0b0720', '#ff2bd6', '#00f0ff'],
   editorial: ['#f4efe6', '#1c1a17', '#8a5a2b'],
-  terminal: ['#020b04', '#3dff7a', '#26b857'],
+  brutal: ['#f1efe7', '#ffe500', '#0a0a0a'],
 };
 
 export const Swatch: React.FC<{ id: ThemeId }> = ({ id }) => (
@@ -19,7 +19,7 @@ export const Swatch: React.FC<{ id: ThemeId }> = ({ id }) => (
   </span>
 );
 
-const ThemeSwitcher: React.FC = () => {
+const ThemeSwitcher: React.FC<{ placement?: 'down' | 'right' | 'up' }> = ({ placement = 'down' }) => {
   const { theme, setTheme, mode, toggleMode } = useTheme();
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
@@ -49,7 +49,7 @@ const ThemeSwitcher: React.FC = () => {
         className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-main)] transition-colors"
       >
         <Palette size={18} />
-        <span className="hidden lg:inline text-[10px] font-bold uppercase tracking-widest">{t.themes[theme].name}</span>
+        {placement !== 'right' && <span className="hidden lg:inline text-[10px] font-bold uppercase tracking-widest">{t.themes[theme].name}</span>}
       </button>
 
       <AnimatePresence>
@@ -60,7 +60,7 @@ const ThemeSwitcher: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-full mt-4 w-72 bg-[var(--bg-main)] border border-[var(--border-color-hover)] shadow-2xl z-50"
+            className={`absolute w-72 max-w-[85vw] bg-[var(--bg-main)] border border-[var(--border-color-hover)] shadow-2xl z-50 ${placement === 'right' ? 'left-full bottom-0 ml-4' : placement === 'up' ? 'right-0 bottom-full mb-4' : 'right-0 top-full mt-4'}`}
           >
             <div className="px-4 py-3 border-b border-[var(--border-color)] text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)]">
               {t.nav.style}
@@ -70,7 +70,7 @@ const ThemeSwitcher: React.FC = () => {
                 key={id}
                 role="menuitemradio"
                 aria-checked={theme === id}
-                onClick={() => { setTheme(id); setOpen(false); }}
+                onClick={(e) => { setTheme(id, { x: e.clientX, y: e.clientY }); setOpen(false); }}
                 className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-[var(--text-main)]/5 transition-colors"
               >
                 <Swatch id={id} />
