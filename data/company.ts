@@ -1,6 +1,5 @@
-// Podatki o ponudniku. Vir: javni poslovni register (matična in davčna številka, naslov).
-// Prazna polja se na strani ne prikažejo. Izpolnite jih, ko so potrjena (npr. na bizi.si ali AJPES):
-//   vatId (ID za DDV), shareCapital (osnovni kapital), register (sodišče in vložna številka), representative (zastopnik).
+// Podatki o ponudniku, prepisani iz Bizi.si (AJPES). Prazna polja se na strani ne prikažejo.
+// Manjka še vložna številka vpisa v sodni register: dodajte jo v polje `register`.
 export const COMPANY = {
   brand: 'DIZAIN',
   legalName: 'DIZAIN, programiranje, prodaja in druge storitve, d.o.o.',
@@ -9,12 +8,12 @@ export const COMPANY = {
   postalCode: '2000',
   city: 'Maribor',
   country: { sl: 'Slovenija', en: 'Slovenia' },
-  registrationNumber: '9093494',
+  registrationNumber: '9093494000',
   taxNumber: '57008060',
-  vatId: '',
-  shareCapital: '',
-  register: '',
-  representative: '',
+  vatId: 'SI57008060',
+  shareCapital: '7.500 EUR',
+  register: 'Okrožno sodišče v Mariboru (vpis: 25. 3. 2022)',
+  representative: 'Kevin Kmetec (direktor), Miha Lipovec (prokurist)',
   email: 'dizain.slo@gmail.com',
   website: 'https://dizain.agency',
   // Ali je podjetje zavezanec za DDV. Če ni, stran prikazuje cene brez razdelitve na neto in bruto.

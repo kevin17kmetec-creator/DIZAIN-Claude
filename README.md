@@ -44,7 +44,7 @@ Nova tema: mapa `themes/<ime>/` z `Shell.tsx`, `Home.tsx`, `index.ts`, vpis v `t
 | Datoteka | Kaj vsebuje |
 | --- | --- |
 | `data/company.ts` | podatki o podjetju (firma, naslov, matična, davčna). Prazna polja (`vatId`, `shareCapital`, `register`, `representative`) se ne prikažejo, dokler jih ne izpolnite |
-| `lib/pricing.ts` | izhodiščne cene brez DDV in stopnja DDV. Znesek z DDV se izračuna sam |
+| `lib/pricing.ts` | izhodiščne cene Z DDV (prikazane veliko) in stopnja DDV. Znesek brez DDV se izračuna sam |
 | `data/projects.ts` | reference. `embed: true` prikaže živi predogled strani, `image` pa lastno sliko iz `public/` |
 | `data/testimonials.ts` | mnenja strank (razdelek se prikaže šele, ko dodate prvo pravo mnenje) |
 | `data/promo.ts` | promocijska koda za Konami skrivnost (privzeto izklopljena) |

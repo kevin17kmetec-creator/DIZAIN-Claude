@@ -20,7 +20,7 @@ const Pricing: React.FC = () => {
   const pv = (i: number) => priceView(i, language);
   const ask = (i: number) => {
     sfx.select();
-    navigate(ROUTES.contact, { state: { project: `${tiers[i].name} (${t.pricing.from} ${pv(i).excl} ${t.pricing.exVat})` } });
+    navigate(ROUTES.contact, { state: { project: `${tiers[i].name} (${t.pricing.from} ${pv(i).main} ${t.pricing.incVat})` } });
   };
   const askCustom = () => {
     sfx.select();
@@ -29,7 +29,7 @@ const Pricing: React.FC = () => {
   // Cena: "od 490 €" in manjša vrstica z DDV
   const Vat: React.FC<{ i: number; className?: string }> = ({ i, className = '' }) => {
     const v = pv(i);
-    return <div className={className}>{t.pricing.exVat}{v.incl ? ` · ${v.incl} ${t.pricing.incVat}` : ''}</div>;
+    return <div className={className}>{v.net ? `${v.net} ${t.pricing.exVat}` : ''}</div>;
   };
   const c = t.pricing.custom;
 
@@ -54,7 +54,7 @@ const Pricing: React.FC = () => {
                   <span className="font-display text-sm" style={{ color: cols[i] }}>{tier.name}</span>
                   <span style={{ color: cols[i] }}><PixelSprite sprite={sprites[i]} size={5} accent="#fff" /></span>
                 </div>
-                <div className="font-display text-2xl text-[var(--text-main)] mb-1"><span className="text-xs text-[var(--text-secondary)]">{t.pricing.from} </span>{pv(i).excl}</div>
+                <div className="font-display text-2xl text-[var(--text-main)] mb-1"><span className="text-xs text-[var(--text-secondary)]">{t.pricing.from} </span>{pv(i).main}<span className="text-xs text-[var(--text-secondary)]"> {t.pricing.incVat}</span></div>
                 <Vat i={i} className="text-base text-[var(--text-muted)] mb-4" />
                 <p className="text-lg text-[var(--text-secondary)] mb-4 leading-tight">{tier.description}</p>
                 <div className="space-y-2 mb-5">
@@ -105,7 +105,7 @@ const Pricing: React.FC = () => {
                 <div className="md:col-span-3">
                   <div className="text-xs uppercase tracking-[0.25em] text-[var(--text-muted)] mb-2">№ {i + 1}{i === HIGHLIGHT && <span className="ml-2 text-[var(--accent-color)]">· {t.pricing.popular}</span>}</div>
                   <h3 className="font-display text-3xl text-[var(--text-main)] italic">{tier.name}</h3>
-                  <div className="font-display text-4xl mt-3 text-[var(--accent-color)]"><span className="text-base italic text-[var(--text-muted)]">{t.pricing.from} </span>{pv(i).excl}</div>
+                  <div className="font-display text-4xl mt-3 text-[var(--accent-color)]"><span className="text-base italic text-[var(--text-muted)]">{t.pricing.from} </span>{pv(i).main}<span className="text-sm italic text-[var(--text-muted)]"> {t.pricing.incVat}</span></div>
                   <Vat i={i} className="text-xs text-[var(--text-muted)]" />
                 </div>
                 <div className="md:col-span-6">
@@ -154,7 +154,7 @@ const Pricing: React.FC = () => {
                 className="border-[3px] border-[var(--text-main)] hard-shadow-lg p-6 flex flex-col" style={{ background: bgs[i] }}>
                 {i === HIGHLIGHT && <span className="self-start bg-[var(--text-main)] text-[var(--bg-tertiary)] font-display text-xs px-2 py-1 mb-3 -rotate-3">★ {t.pricing.popular}</span>}
                 <h3 className="font-display text-3xl mb-1">{tier.name}</h3>
-                <div className="font-display text-6xl my-2"><span className="text-xl">{t.pricing.from} </span>{pv(i).excl}</div>
+                <div className="font-display text-6xl my-2"><span className="text-xl">{t.pricing.from} </span>{pv(i).main}<span className="text-base"> {t.pricing.incVat}</span></div>
                 <Vat i={i} className="font-mono text-sm font-bold -mt-1 mb-3" />
                 <p className="font-medium mb-5">{tier.description}</p>
                 <ul className="space-y-2 flex-grow mb-6">
@@ -200,7 +200,8 @@ const Pricing: React.FC = () => {
                     <h3 className="text-xl font-bold text-[var(--text-main)] uppercase tracking-wider mb-2">{tier.name}</h3>
                     <div className="flex items-baseline gap-1 mb-4">
                       <span className="text-[var(--text-muted)] text-sm mr-1">{t.pricing.from}</span>
-                      <span className="text-4xl font-display font-bold text-[var(--text-main)]">{pv(index).excl}</span>
+                      <span className="text-4xl font-display font-bold text-[var(--text-main)]">{pv(index).main}</span>
+                      <span className="text-[var(--text-muted)] text-sm ml-1">{t.pricing.incVat}</span>
                     </div>
                     <Vat i={index} className="text-xs text-[var(--text-muted)] -mt-3 mb-4" />
                     <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{tier.description}</p>

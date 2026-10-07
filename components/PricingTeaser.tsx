@@ -15,7 +15,7 @@ const PricingTeaser: React.FC = () => {
   const bg = ['var(--bg-secondary)', 'var(--bg-tertiary)', 'var(--c2)', 'var(--c3)'];
 
   const cards = [
-    ...t.pricing.tiers.map((tier, i) => ({ key: tier.name, name: tier.name, big: `${t.pricing.from} ${priceView(i, language).excl}`, small: `${t.pricing.exVat}${priceView(i, language).incl ? ` · ${priceView(i, language).incl} ${t.pricing.incVat}` : ''}` })),
+    ...t.pricing.tiers.map((tier, i) => ({ key: tier.name, name: tier.name, big: `${t.pricing.from} ${priceView(i, language).main}`, small: `${t.pricing.incVat}${priceView(i, language).net ? ` · ${priceView(i, language).net} ${t.pricing.exVat}` : ''}` })),
     { key: 'custom', name: t.pricing.custom.name, big: t.pricing.custom.price, small: '' },
   ];
 

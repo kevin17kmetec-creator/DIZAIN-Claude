@@ -17,15 +17,15 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Za srce MB',
-    category: { sl: 'Spletna stran', en: 'Website' },
+    category: { sl: 'Prenova spletne strani', en: 'Website redesign' },
     description: {
-      sl: 'Spletna stran, ki jo je izdelal DIZAIN. Oglejte si jo v živo.',
-      en: 'A website built by DIZAIN. See it live.',
+      sl: 'Prenova zastarele spletne strani Društva za zdravje srca in ožilja za Maribor in Podravje.',
+      en: 'A redesign of the outdated website of the Society for Heart and Vascular Health for Maribor and Podravje.',
     },
     specs: [],
     date: '2026-10-01',
     link: 'https://www.zasrce-mb.si/',
-    embed: false,
+    embed: true,
   },
   {
     id: 0,

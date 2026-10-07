@@ -16,7 +16,7 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
   });
 
   const isEven = index % 2 === 0;
-  const x = useTransform(scrollYProgress, [0, 1], [isEven ? 150 : -150, 0]);
+  const x = useTransform(scrollYProgress, [0, 1], [isEven ? 60 : -60, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [0.2, 1]);
   const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
 
@@ -55,9 +55,9 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
         </motion.div>
       </div>
 
-      <div className={`w-full md:w-1/3 flex flex-col ${!isEven ? 'md:items-end md:text-right' : ''}`}>
+      <div className={`relative z-20 w-full md:w-1/3 flex flex-col ${!isEven ? 'md:items-end md:text-right' : ''}`}>
         <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest mb-4">{project.category[language]}</span>
-        <h3 className="text-3xl md:text-5xl font-display font-bold text-[var(--text-main)] mb-6 break-words">
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[var(--text-main)] mb-6 break-words">
           {to ? <Link to={to} className="hover:text-[var(--text-secondary)] transition-colors">{project.title}</Link> : project.title}
         </h3>
         <p className="text-[var(--text-secondary)] text-lg leading-relaxed mb-8 max-w-sm">{project.description[language]}</p>

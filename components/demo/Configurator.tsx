@@ -61,7 +61,7 @@ const Configurator: React.FC = () => {
       `${t.configurator.summaryType}: ${t.configurator.types[type].name}`,
       `${t.configurator.summaryFeatures}: ${list.length ? list.join(', ') : t.configurator.summaryNone}`,
       `${t.configurator.summaryStyle}: ${t.themes[theme].name}`,
-      isCustom ? `${t.configurator.recommended}: ${tier.name} (${t.pricing.custom.price})` : `${t.configurator.recommended}: ${tier.name} (${t.configurator.from} ${view.excl} ${t.pricing.exVat})`,
+      isCustom ? `${t.configurator.recommended}: ${tier.name} (${t.pricing.custom.price})` : `${t.configurator.recommended}: ${tier.name} (${t.configurator.from} ${view.main} ${t.pricing.incVat})`,
     ].join('\n');
     navigate(ROUTES.contact, { state: { project: t.configurator.summaryProject, details } });
   };
@@ -216,10 +216,10 @@ const Configurator: React.FC = () => {
               {isCustom ? (
                 <span className="text-[var(--text-main)] font-bold text-xl">{t.pricing.custom.price}</span>
               ) : (
-                <span className="text-[var(--text-secondary)]">{t.configurator.from} <span className="text-[var(--text-main)] font-bold text-xl">{view.excl}</span> <span className="text-xs">{t.pricing.exVat}</span></span>
+                <span className="text-[var(--text-secondary)]">{t.configurator.from} <span className="text-[var(--text-main)] font-bold text-xl">{view.main}</span> <span className="text-xs">{t.pricing.incVat}</span></span>
               )}
             </div>
-            {!isCustom && view.incl && <p className="text-xs text-[var(--text-muted)] mt-1">{view.incl} {t.pricing.incVat}</p>}
+            {!isCustom && view.net && <p className="text-xs text-[var(--text-muted)] mt-1">{view.net} {t.pricing.exVat}</p>}
             <p className="text-xs text-[var(--text-muted)] mt-3">{isCustom ? t.configurator.customNote : t.configurator.note}</p>
             <button
               onClick={send}

@@ -1,7 +1,7 @@
 import { COMPANY } from '../data/company';
 
-// Izhodiščne cene paketov v EUR, brez DDV. Vrstni red: Osnovni, Poslovni, Premium.
-export const PRICES_EXCL_VAT = [490, 990, 1900];
+// Cene paketov v EUR, ki VKLJUČUJEJO DDV (tako so prikazane obiskovalcu). Vrstni red: Osnovni, Poslovni, Premium.
+export const PRICES_INCL_VAT = [490, 990, 1900];
 // Splošna stopnja DDV v Sloveniji. Preverite, ali je veljavna, ko spreminjate cene.
 export const VAT_RATE = 0.22;
 
@@ -14,12 +14,12 @@ export const formatEur = (amount: number, language: 'sl' | 'en') =>
   }).format(amount);
 
 export interface PriceView {
-  excl: string;
-  incl: string | null; // null, če podjetje ni zavezanec za DDV
+  main: string; // cena z DDV, prikazana veliko
+  net: string | null; // znesek brez DDV (manjši zapis), null če podjetje ni zavezanec za DDV
 }
 
 export const priceView = (index: number, language: 'sl' | 'en'): PriceView => {
-  const base = PRICES_EXCL_VAT[index];
-  const gross = Math.round(base * (1 + VAT_RATE) * 100) / 100;
-  return { excl: formatEur(base, language), incl: COMPANY.vatPayer ? formatEur(gross, language) : null };
+  const gross = PRICES_INCL_VAT[index];
+  const net = Math.round((gross / (1 + VAT_RATE)) * 100) / 100;
+  return { main: formatEur(gross, language), net: COMPANY.vatPayer ? formatEur(net, language) : null };
 };

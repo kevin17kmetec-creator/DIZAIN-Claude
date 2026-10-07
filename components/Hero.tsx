@@ -16,21 +16,17 @@ const RotatingWord: React.FC<{ words: string[] }> = ({ words }) => {
   }, [words.length, reduce]);
 
   const word = words[i % words.length];
+  // Vse besede so v istem, fiksno visokem okvirju in poravnane na sredino (vodoravno in navpično)
   return (
-    <span className="inline-grid align-bottom text-left">
-      {/* nevidni nosilec ohrani širino najdaljše besede */}
-      <span className="invisible col-start-1 row-start-1 h-0 overflow-hidden" aria-hidden="true">
-        {[...words].sort((a, b) => b.length - a.length)[0]}
-      </span>
-      <AnimatePresence mode="wait">
+    <span className="relative flex items-center justify-center h-[1.35em] w-full overflow-hidden" aria-live="polite">
+      <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={word}
-          initial={reduce ? false : { y: 14, opacity: 0 }}
+          initial={reduce ? false : { y: '100%', opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={reduce ? { opacity: 0 } : { y: -14, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="col-start-1 row-start-1 text-[var(--accent-color)]"
-          aria-live="polite"
+          exit={reduce ? { opacity: 0 } : { y: '-100%', opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0 flex items-center justify-center text-center whitespace-nowrap text-[var(--accent-color)]"
         >
           {word}
         </motion.span>
@@ -84,9 +80,10 @@ const Hero: React.FC = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-[var(--text-main)] text-2xl md:text-5xl lg:text-6xl font-display font-bold uppercase text-center drop-shadow-2xl max-w-5xl leading-tight tracking-wide"
+            className="text-[var(--text-main)] w-full text-xl sm:text-2xl md:text-5xl lg:text-6xl font-display font-bold uppercase text-center drop-shadow-2xl max-w-5xl leading-tight tracking-wide"
           >
-            {t.hero.build} <RotatingWord words={t.hero.words} />
+            <span className="block">{t.hero.build}</span>
+            <RotatingWord words={t.hero.words} />
           </motion.h2>
 
           <motion.div
@@ -108,14 +105,14 @@ const Hero: React.FC = () => {
             <Magnetic>
               <Link
                 to={ROUTES.contact}
-                className="inline-flex items-center justify-center px-10 py-4 font-display text-xs tracking-widest text-[var(--bg-main)] bg-[var(--text-main)] border border-[var(--text-main)] hover:bg-transparent hover:text-[var(--text-main)] transition-colors duration-300 font-bold"
+                className="inline-flex items-center justify-center text-center px-10 py-4 font-display text-xs tracking-widest text-[var(--bg-main)] bg-[var(--text-main)] border border-[var(--text-main)] hover:bg-transparent hover:text-[var(--text-main)] transition-colors duration-300 font-bold"
               >
                 {t.hero.cta}
               </Link>
             </Magnetic>
             <Link
               to={ROUTES.demo}
-              className="inline-flex items-center justify-center px-10 py-4 font-display text-xs tracking-widest text-[var(--text-main)] border border-[var(--border-color-hover)] bg-[var(--bg-main)]/60 backdrop-blur-md hover:border-[var(--text-main)] transition-colors duration-300"
+              className="inline-flex items-center justify-center text-center px-10 py-4 font-display text-xs tracking-widest text-[var(--text-main)] border border-[var(--border-color-hover)] bg-[var(--bg-main)]/60 backdrop-blur-md hover:border-[var(--text-main)] transition-colors duration-300"
             >
               {t.hero.ctaSecondary}
             </Link>
