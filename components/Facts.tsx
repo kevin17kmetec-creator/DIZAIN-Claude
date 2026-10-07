@@ -7,7 +7,7 @@ const Facts: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-32 bg-[var(--bg-main)] border-y border-[var(--border-color)] transition-colors duration-500">
+    <section data-sec="facts" className="py-32 bg-[var(--bg-main)] border-y border-[var(--border-color)] transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>

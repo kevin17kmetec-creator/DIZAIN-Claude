@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { preloadTheme } from '../themes/registry';
+import { captureScroll, restoreScroll } from '../lib/scrollAnchor';
 
 export type ThemeId = 'minimal' | 'arcade' | 'editorial' | 'brutal';
 export type Mode = 'dark' | 'light';
@@ -42,10 +43,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Menjava teme s krožnim prehodom (View Transitions API), kjer je podprt
   const setTheme = (t: ThemeId, origin?: { x: number; y: number }) => {
     if (t === theme) return;
+    // Zapomnimo si, kateri del vsebine je v pogledu, da ga po menjavi teme pokažemo v novi postavitvi
+    const snap = captureScroll(origin);
     const apply = () => {
       document.documentElement.dataset.theme = t;
       flushSync(() => setThemeState(t));
       write('dizain-theme', t);
+      restoreScroll(snap);
     };
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };

@@ -16,7 +16,7 @@ const TrustStrip: React.FC = () => {
   if (theme === 'arcade') {
     const cols = ['var(--c1)', 'var(--c2)', 'var(--c4)', 'var(--c6)'];
     return (
-      <section className="px-4 py-16">
+      <section data-sec="trust" className="px-4 py-16">
         <h2 className="font-display text-center text-[var(--text-main)] mb-10" style={{ fontSize: 'clamp(1rem,3vw,1.8rem)', textShadow: '3px 3px 0 var(--c4)' }}>{t.trust.title}</h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {items.map((it, i) => (
@@ -33,7 +33,7 @@ const TrustStrip: React.FC = () => {
 
   if (theme === 'editorial') {
     return (
-      <section className="px-4 md:px-10 py-14 border-y border-[var(--text-main)]">
+      <section data-sec="trust" className="px-4 md:px-10 py-14 border-y border-[var(--text-main)]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4">
           {items.map((it, i) => (
             <div key={it.title} className="px-6 py-6 md:border-r last:border-r-0 border-[var(--border-color)]">
@@ -50,7 +50,7 @@ const TrustStrip: React.FC = () => {
   if (theme === 'brutal') {
     const bg = ['var(--bg-tertiary)', 'var(--c2)', 'var(--c4)', 'var(--c1)'];
     return (
-      <section className="px-4 md:px-12 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section data-sec="trust" className="px-4 md:px-12 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {items.map((it, i) => (
           <motion.div key={it.title} whileHover={{ y: -6, rotate: i % 2 ? 1 : -1 }} className="border-[3px] border-[var(--text-main)] hard-shadow p-5" style={{ background: bg[i] }}>
             <div className="font-display text-3xl mb-2">0{i + 1}</div>
@@ -63,7 +63,7 @@ const TrustStrip: React.FC = () => {
   }
 
   return (
-    <section className="py-14 border-y border-[var(--border-color)] bg-[var(--bg-main)]">
+    <section data-sec="trust" className="py-14 border-y border-[var(--border-color)] bg-[var(--bg-main)]">
       <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {items.map((it, i) => {
           const Icon = ICONS[i];

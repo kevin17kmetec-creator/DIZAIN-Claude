@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
   const lines = b.lines;
   return (
-    <section ref={ref} className="relative px-4 md:px-12 pt-24 md:pt-12 pb-12 overflow-x-clip">
+    <section data-sec="hero" ref={ref} className="relative px-4 md:px-12 pt-24 md:pt-12 pb-12 overflow-x-clip">
       <div className="flex items-center justify-between font-mono text-xs md:text-sm font-bold mb-6">
         <span>MARIBOR / SI</span>
         <span>{new Date().getFullYear()} ©</span>
@@ -92,7 +92,7 @@ const Strips: React.FC = () => {
 const Services: React.FC = () => {
   const b = useLanguage().t.tc.brutal;
   return (
-    <section className="px-4 md:px-12 py-20">
+    <section data-sec="services" className="px-4 md:px-12 py-20">
       <h2 className="font-display text-5xl md:text-9xl mb-10">{b.servicesTitle}</h2>
       <ServiceList />
     </section>
@@ -104,7 +104,7 @@ const StackedProcess: React.FC = () => {
   const b = t.tc.brutal;
   const cols = ['var(--bg-tertiary)', 'var(--c2)', 'var(--c4)', 'var(--c1)', 'var(--c5)', 'var(--bg-secondary)'];
   return (
-    <section className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)]">
+    <section data-sec="process" className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)]">
       <h2 className="font-display text-5xl md:text-9xl mb-12">{b.processTitle}</h2>
       <div className="relative">
         {t.process.steps.map((s, i) => (
@@ -128,7 +128,7 @@ const Works: React.FC = () => {
   const b = t.tc.brutal;
   const p = sortedProjects[0];
   return (
-    <section className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)] bg-[var(--bg-tertiary)]">
+    <section data-sec="portfolio" className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)] bg-[var(--bg-tertiary)]">
       <div className="flex items-end justify-between gap-6 mb-10">
         <h2 className="font-display text-5xl md:text-9xl">{b.worksTitle}</h2>
         <Link to={ROUTES.works} className="font-display text-lg md:text-2xl underline decoration-4 hover:text-[var(--accent-color)]">{t.portfolio.seeAll} →</Link>
@@ -159,7 +159,7 @@ const Works: React.FC = () => {
 const Numbers: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <section className="bg-[var(--text-main)] text-[var(--bg-main)] border-y-[3px] border-[var(--text-main)] px-4 md:px-12 py-20">
+    <section data-sec="facts" className="bg-[var(--text-main)] text-[var(--bg-main)] border-y-[3px] border-[var(--text-main)] px-4 md:px-12 py-20">
       <h2 className="font-display text-5xl md:text-9xl text-[var(--bg-tertiary)] mb-12">{t.tc.brutal.factsTitle}</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 border-[3px] border-[var(--bg-tertiary)]">
         {t.facts.items.map((f, i) => (
@@ -177,7 +177,7 @@ const Why: React.FC = () => {
   const { t } = useLanguage();
   const bg = ['var(--c4)', 'var(--bg-tertiary)', 'var(--c2)'];
   return (
-    <section className="px-4 md:px-12 py-20 grid md:grid-cols-3 gap-8">
+    <section data-sec="why" className="px-4 md:px-12 py-20 grid md:grid-cols-3 gap-8">
       {t.whyUs.items.map((it, i) => (
         <motion.div key={it.title} whileHover={{ rotate: i % 2 ? 1.5 : -1.5, y: -6 }} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="border-[3px] border-[var(--text-main)] hard-shadow-lg p-6 md:p-8" style={{ background: bg[i] }}>
@@ -194,7 +194,7 @@ const SayHi: React.FC = () => {
   const { t } = useLanguage();
   const b = t.tc.brutal;
   return (
-    <section className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)] bg-[var(--bg-tertiary)]">
+    <section data-sec="contact" className="px-4 md:px-12 py-20 border-t-[3px] border-[var(--text-main)] bg-[var(--bg-tertiary)]">
       <h2 className="font-display leading-[0.85]" style={{ fontSize: 'clamp(3.5rem, 15vw, 14rem)' }}><SplitReveal text={b.sayHi} /></h2>
       <p className="mt-4 text-xl md:text-3xl font-medium max-w-2xl">{b.sayHiSub}</p>
       <div className="mt-10 grid lg:grid-cols-12 gap-10 items-start">

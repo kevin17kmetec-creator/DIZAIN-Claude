@@ -13,6 +13,7 @@ import TrustStrip from '../../components/TrustStrip';
 import PricingTeaser from '../../components/PricingTeaser';
 import Testimonials from '../../components/Testimonials';
 import Faq from '../../components/Faq';
+import TryIt from '../../components/TryIt';
 import ServiceList from '../../components/ServiceList';
 import ContactForm from '../../components/ContactForm';
 
@@ -31,7 +32,7 @@ const FrontPage: React.FC = () => {
     { label: e.letter, id: 'letter', page: 52 },
   ];
   return (
-    <section className="px-4 md:px-10 py-10 md:py-14">
+    <section data-sec="hero" className="px-4 md:px-10 py-10 md:py-14">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
         <aside className="lg:col-span-3 order-2 lg:order-1 lg:border-r lg:border-[var(--border-color)] lg:pr-8">
           <h2 className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-5">{e.inThisIssue}</h2>
@@ -77,7 +78,7 @@ const FrontPage: React.FC = () => {
           </div>
         </article>
 
-        <aside id="numbers" className="lg:col-span-3 order-3 lg:border-l lg:border-[var(--border-color)] lg:pl-8">
+        <aside id="numbers" data-sec="facts" className="lg:col-span-3 order-3 lg:border-l lg:border-[var(--border-color)] lg:pl-8">
           <h2 className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-5">{e.numbers}</h2>
           <ul>
             {t.facts.items.map((f) => (
@@ -97,7 +98,7 @@ const Article: React.FC = () => {
   const { t } = useLanguage();
   const e = t.tc.editorial;
   return (
-    <section className="px-4 md:px-10 py-16 border-t border-[var(--text-main)]">
+    <section data-sec="about" className="px-4 md:px-10 py-16 border-t border-[var(--text-main)]">
       <div className="max-w-5xl mx-auto">
         <div className="columns-2-balanced font-display text-lg md:text-xl leading-relaxed text-[var(--text-secondary)]">
           {e.body.map((p, i) => <p key={i} className={`mb-5 ${i === 0 ? 'dropcap' : ''}`}>{p}</p>)}
@@ -116,7 +117,7 @@ const Chapters: React.FC = () => {
   const { t } = useLanguage();
   const e = t.tc.editorial;
   return (
-    <section id="chapters" className="border-y-2 border-[var(--text-main)] bg-[var(--bg-secondary)]">
+    <section id="chapters" data-sec="process" className="border-y-2 border-[var(--text-main)] bg-[var(--bg-secondary)]">
       <HScroll
         progressClassName="bg-[var(--accent-color)]"
         stickyClassName="pt-14"
@@ -152,7 +153,7 @@ const Feature: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
   const clip = useTransform(scrollYProgress, [0, 0.35], ['inset(18% 12% 18% 12%)', 'inset(0% 0% 0% 0%)']);
   return (
-    <section id="features" ref={ref} className="relative py-20 px-4 md:px-10">
+    <section id="features" data-sec="portfolio" ref={ref} className="relative py-20 px-4 md:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between border-b border-[var(--text-main)] pb-4 mb-8">
           <h2 className="font-display italic text-4xl md:text-6xl text-[var(--text-main)]">{e.featureTitle}</h2>
@@ -179,7 +180,7 @@ const Feature: React.FC = () => {
 const Index: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <section id="index" className="px-4 md:px-10 py-20 border-t border-[var(--text-main)]">
+    <section id="index" data-sec="services" className="px-4 md:px-10 py-20 border-t border-[var(--text-main)]">
       <ServiceList />
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-0 border-y border-[var(--text-main)]">
         {t.whyUs.items.map((it, i) => (
@@ -198,7 +199,7 @@ const Letter: React.FC = () => {
   const { t } = useLanguage();
   const e = t.tc.editorial;
   return (
-    <section id="letter" className="px-4 md:px-10 py-20 bg-[var(--bg-secondary)] border-y-2 border-[var(--text-main)]">
+    <section id="letter" data-sec="contact" className="px-4 md:px-10 py-20 bg-[var(--bg-secondary)] border-y-2 border-[var(--text-main)]">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <div className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-4">{t.nav.contact}</div>
@@ -227,6 +228,7 @@ const Home: React.FC = () => {
       <Feature />
       <Index />
       <PricingTeaser />
+      <TryIt />
       <Testimonials />
       <Faq />
       <Letter />

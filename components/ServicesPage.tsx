@@ -22,7 +22,7 @@ const ServicesPage: React.FC = () => {
         <ServiceList />
 
         {/* CMS */}
-        <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="mb-32 relative rounded-3xl overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+        <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} data-sec="cms" className="mb-32 relative rounded-3xl overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-color)]">
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-tertiary)] to-[var(--bg-main)] z-0"></div>
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 p-8 md:p-24 items-center">
             <div>

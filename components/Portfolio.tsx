@@ -84,7 +84,7 @@ const Portfolio: React.FC = () => {
   const displayed = sortedProjects.slice(0, 5);
 
   return (
-    <section id="portfolio" className="relative bg-[var(--bg-main)] py-24 overflow-hidden transition-colors duration-500">
+    <section id="portfolio" data-sec="portfolio" className="relative bg-[var(--bg-main)] py-24 overflow-hidden transition-colors duration-500">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[var(--text-main)]/[0.02] to-transparent pointer-events-none"></div>
 
       <div className="container mx-auto px-6">

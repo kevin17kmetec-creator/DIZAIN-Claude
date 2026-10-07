@@ -67,7 +67,7 @@ const TitleScreen: React.FC = () => {
   ];
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden pt-20 pb-32 px-4">
+    <section data-sec="hero" ref={ref} className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden pt-20 pb-32 px-4">
       <Stars />
       {/* sonce */}
       <motion.div aria-hidden="true" style={{ y: sunY }} className="absolute left-1/2 -translate-x-1/2 bottom-[38%] w-[min(60vw,380px)] aspect-square rounded-full opacity-40"
@@ -139,7 +139,7 @@ const LevelMap: React.FC = () => {
   const colors = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)'];
 
   return (
-    <section id="levels" className="py-24 px-4">
+    <section id="levels" data-sec="process" className="py-24 px-4">
       <SectionTitle title={a.mapTitle} hint={a.mapHint} color="var(--c2)" />
       <div ref={ref} className="relative max-w-4xl mx-auto">
         <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-2 bg-[var(--border-color)]/50" aria-hidden="true" style={{ backgroundImage: 'repeating-linear-gradient(to bottom, var(--text-muted) 0 8px, transparent 8px 16px)' }} />
@@ -200,7 +200,7 @@ const PowerUps: React.FC = () => {
   const cols = ['var(--c1)', 'var(--c4)', 'var(--c2)', 'var(--c5)'];
   const sprites = ['star', 'coin', 'invader', 'ghost'] as const;
   return (
-    <section id="powerups" className="py-24 px-4 bg-[var(--bg-secondary)]/70 border-y-4 border-[var(--border-color)]">
+    <section id="powerups" data-sec="services" className="py-24 px-4 bg-[var(--bg-secondary)]/70 border-y-4 border-[var(--border-color)]">
       <SectionTitle title={a.powerTitle} hint={a.powerHint} color="var(--c5)" />
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {t.services.items.map((s, i) => (
@@ -240,7 +240,7 @@ const Cartridges: React.FC = () => {
   const { t, language } = useLanguage();
   const a = t.tc.arcade;
   return (
-    <section id="cartridges" className="py-24 px-4">
+    <section id="cartridges" data-sec="portfolio" className="py-24 px-4">
       <SectionTitle title={a.cartTitle} hint={a.cartHint} color="var(--c1)" />
       <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {sortedProjects.slice(0, 4).map((p, i) => (
@@ -266,7 +266,7 @@ const Achievements: React.FC = () => {
   ];
   const cols = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)', 'var(--c1)'];
   return (
-    <section className="py-24 px-4 bg-[var(--bg-secondary)]/70 border-y-4 border-[var(--border-color)]">
+    <section data-sec="why" className="py-24 px-4 bg-[var(--bg-secondary)]/70 border-y-4 border-[var(--border-color)]">
       <SectionTitle title={a.achTitle} color="var(--c6)" />
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
         {items.map((it, i) => (
@@ -294,7 +294,7 @@ const Options: React.FC = () => {
   const { t } = useLanguage();
   const a = t.tc.arcade;
   return (
-    <section id="options" className="py-24 px-4">
+    <section id="options" data-sec="try" className="py-24 px-4">
       <SectionTitle title={a.menu[2].label} hint={t.try.desc} color="var(--c3)" />
       <div className="max-w-5xl mx-auto"><ThemePicker /></div>
       <div className="max-w-5xl mx-auto mt-4 grid sm:grid-cols-2 gap-4">
@@ -323,7 +323,7 @@ const InsertCoin: React.FC = () => {
   const { t } = useLanguage();
   const a = t.tc.arcade;
   return (
-    <section id="coin" className="py-24 px-4">
+    <section id="coin" data-sec="contact" className="py-24 px-4">
       <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
         <div className="text-center lg:text-left lg:sticky lg:top-24">
           <div className="text-[var(--c6)] mb-6 flex justify-center lg:justify-start"><PixelSprite sprite="coin" size={10} accent="#fff" /></div>

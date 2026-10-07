@@ -20,7 +20,7 @@ const PricingTeaser: React.FC = () => {
   ];
 
   return (
-    <section className={`py-20 ${brutal ? 'px-4 md:px-12 border-t-[3px] border-[var(--text-main)]' : 'px-6'}`}>
+    <section data-sec="pricing" className={`py-20 ${brutal ? 'px-4 md:px-12 border-t-[3px] border-[var(--text-main)]' : 'px-6'}`}>
       <div className={brutal ? '' : 'container mx-auto max-w-6xl'}>
         <div className="flex items-end justify-between gap-6 flex-wrap mb-10">
           <h2 className={`font-display text-[var(--text-main)] ${brutal ? 'text-5xl md:text-8xl' : editorial ? 'italic text-4xl md:text-6xl' : 'text-3xl md:text-5xl'}`}>{t.pricing.title}</h2>

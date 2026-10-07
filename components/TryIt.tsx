@@ -12,7 +12,7 @@ const TryIt: React.FC = () => {
   const links = [`${ROUTES.demo}?tab=configurator`, `${ROUTES.demo}?tab=shop`];
 
   return (
-    <section id="try" className="py-32 bg-[var(--bg-secondary)] border-y border-[var(--border-color)] transition-colors duration-500">
+    <section id="try" data-sec="try" className="py-32 bg-[var(--bg-secondary)] border-y border-[var(--border-color)] transition-colors duration-500">
       <div className="container mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14 max-w-3xl">
           <div className="text-xs font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-6">{t.try.kicker}</div>

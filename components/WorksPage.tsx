@@ -124,7 +124,7 @@ const WorksPage: React.FC = () => {
     <div className="min-h-screen bg-[var(--bg-main)] page-top pb-24 relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10" ref={topRef}>
         <PageHeader title={t.portfolio.works} lead={t.whyUs.desc} index={1} />
-        {list}
+        <div data-sec="portfolio">{list}</div>
         <p className="mt-20 text-center text-xs uppercase tracking-widest text-[var(--text-muted)]">{t.portfolio.more}</p>
 
         {totalPages > 1 && (

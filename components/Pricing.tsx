@@ -41,7 +41,7 @@ const Pricing: React.FC = () => {
     const bars = [[40, 50, 60], [75, 80, 85], [100, 100, 100]];
     const statNames = ['SPD', 'PWR', 'MAG'];
     return (
-      <section id="pricing" className="py-20">
+      <section id="pricing" data-sec="pricing" className="py-20">
         <div className="container mx-auto px-6">
           <h2 className="font-display text-center text-[var(--text-main)] mb-2" style={{ fontSize: 'clamp(1.2rem,4vw,2.4rem)', textShadow: '3px 3px 0 var(--c4)' }}>{a.playerTitle}</h2>
           <p className="text-center text-xl text-[var(--text-secondary)] mb-12">{t.pricing.lead}</p>
@@ -91,7 +91,7 @@ const Pricing: React.FC = () => {
   /* ---------------- EDITORIAL: cenik kot naročniški list ---------------- */
   if (theme === 'editorial') {
     return (
-      <section id="pricing" className="py-24">
+      <section id="pricing" data-sec="pricing" className="py-24">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="text-center mb-14">
             <div className="text-xs uppercase tracking-[0.3em] text-[var(--accent-color)] font-bold mb-4">{t.pricing.title}</div>
@@ -144,7 +144,7 @@ const Pricing: React.FC = () => {
   if (theme === 'brutal') {
     const bgs = ['var(--bg-secondary)', 'var(--bg-tertiary)', 'var(--c2)'];
     return (
-      <section id="pricing" className="py-24 border-y-2 border-[var(--text-main)]">
+      <section id="pricing" data-sec="pricing" className="py-24 border-y-2 border-[var(--text-main)]">
         <div className="container mx-auto px-6">
           <h2 className="font-display text-5xl md:text-8xl mb-4 text-[var(--text-main)]">{t.pricing.title}</h2>
           <p className="text-xl font-medium max-w-2xl mb-14">{t.pricing.lead}</p>
@@ -180,7 +180,7 @@ const Pricing: React.FC = () => {
 
   /* ---------------- MINIMAL ---------------- */
   return (
-    <section id="pricing" className="py-24 bg-[var(--bg-secondary)] relative overflow-hidden transition-colors duration-500">
+    <section id="pricing" data-sec="pricing" className="py-24 bg-[var(--bg-secondary)] relative overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-[var(--text-main)] mb-6">{t.pricing.title}</h2>

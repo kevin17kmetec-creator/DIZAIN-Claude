@@ -10,7 +10,7 @@ const Process: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="process" className="py-32 bg-[var(--bg-main)] relative overflow-hidden text-[var(--text-main)] transition-colors duration-500">
+    <section id="process" data-sec="process" className="py-32 bg-[var(--bg-main)] relative overflow-hidden text-[var(--text-main)] transition-colors duration-500">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-24 border-b border-[var(--border-color)] pb-8">
           <motion.h2

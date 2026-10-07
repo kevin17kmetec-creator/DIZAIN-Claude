@@ -8,7 +8,7 @@ const Testimonials: React.FC = () => {
   const { t, language } = useLanguage();
   if (TESTIMONIALS.length === 0) return null;
   return (
-    <section className="py-20 px-6">
+    <section data-sec="testimonials" className="py-20 px-6">
       <div className="container mx-auto max-w-5xl">
         <h2 className="font-display text-3xl md:text-5xl text-[var(--text-main)] mb-10">{t.trust.testimonialsTitle}</h2>
         <div className="grid md:grid-cols-2 gap-6">

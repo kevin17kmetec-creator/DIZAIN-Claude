@@ -9,7 +9,7 @@ const ThemePicker: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div role="radiogroup" aria-label={t.nav.style} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div data-anchor="theme-picker" role="radiogroup" aria-label={t.nav.style} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {THEME_IDS.map((id) => {
         const active = theme === id;
         return (

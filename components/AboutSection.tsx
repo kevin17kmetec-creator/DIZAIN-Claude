@@ -9,7 +9,7 @@ const AboutSection: React.FC = () => {
   const { t, language } = useLanguage();
   const l = t.legal.labels;
   return (
-    <section className="py-20 px-6 border-t border-[var(--border-color)]">
+    <section data-sec="about" className="py-20 px-6 border-t border-[var(--border-color)]">
       <div className="container mx-auto max-w-6xl grid lg:grid-cols-12 gap-12 items-start">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="lg:col-span-7">
           <div className="text-xs font-bold uppercase tracking-widest text-[var(--accent-color)] mb-4">{t.about.kicker}</div>

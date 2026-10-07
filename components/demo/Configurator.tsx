@@ -113,7 +113,7 @@ const Configurator: React.FC = () => {
             </div>
           </fieldset>
 
-          <fieldset>
+          <fieldset data-anchor="cfg-style">
             <legend className="text-xs font-bold uppercase tracking-widest text-[var(--text-main)] mb-4">{t.configurator.styleLabel}</legend>
             <div className="flex flex-wrap gap-3">
               {THEME_IDS.map((id) => (

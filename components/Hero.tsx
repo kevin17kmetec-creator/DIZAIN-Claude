@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
 
   return (
-    <section ref={containerRef} className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-[var(--bg-main)] transition-colors duration-500">
+    <section data-sec="hero" ref={containerRef} className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-[var(--bg-main)] transition-colors duration-500">
       <motion.div className="absolute inset-0 z-0" style={{ scale, opacity }}>
         <div className="absolute inset-0 bg-[var(--bg-main)]"></div>
 

@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-32 bg-[var(--bg-main)] relative border-t border-[var(--border-color)] overflow-hidden transition-colors duration-500">
+    <section id="contact" data-sec="contact" className="py-32 bg-[var(--bg-main)] relative border-t border-[var(--border-color)] overflow-hidden transition-colors duration-500">
       <div className="absolute inset-0 bg-noise opacity-[var(--noise-opacity)] mix-blend-overlay pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10">

@@ -8,7 +8,7 @@ const WhyUs: React.FC = () => {
   const icons = [<Zap className="w-8 h-8" />, <PenTool className="w-8 h-8" />, <InfinityIcon className="w-8 h-8" />];
 
   return (
-    <section className="py-32 bg-[var(--bg-secondary)] text-[var(--text-main)] relative transition-colors duration-500">
+    <section data-sec="why" className="py-32 bg-[var(--bg-secondary)] text-[var(--text-main)] relative transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">

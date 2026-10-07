@@ -21,7 +21,7 @@ const ServiceList: React.FC = () => {
     const sprites = ['star', 'coin', 'invader', 'ghost'] as const;
     const lv = [92, 88, 96, 84];
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+      <div data-sec="services" className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
         {items.map((s, i) => (
           <motion.div key={s} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onMouseEnter={() => sfx.blip()} className="pixel-box p-6">
             <div className="flex items-center gap-4 mb-4" style={{ color: cols[i] }}>
@@ -38,7 +38,7 @@ const ServiceList: React.FC = () => {
 
   if (theme === 'editorial') {
     return (
-      <div className="mb-28 max-w-4xl mx-auto">
+      <div data-sec="services" className="mb-28 max-w-4xl mx-auto">
         <h2 className="font-display italic text-3xl text-center mb-10 text-[var(--text-main)]">{t.tc.editorial.indexTitle}</h2>
         <ol>
           {items.map((s, i) => (
@@ -59,7 +59,7 @@ const ServiceList: React.FC = () => {
   if (theme === 'brutal') {
     const bgs = ['var(--bg-tertiary)', 'var(--c2)', 'var(--c4)', 'var(--c1)'];
     return (
-      <div className="mb-24 border-y-[3px] border-[var(--text-main)]">
+      <div data-sec="services" className="mb-24 border-y-[3px] border-[var(--text-main)]">
         {items.map((s, i) => {
           const isOpen = open === i;
           return (
@@ -86,7 +86,7 @@ const ServiceList: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col mb-32">
+    <div data-sec="services" className="flex flex-col mb-32">
       {items.map((service, index) => {
         const Icon = icons[index];
         return (

@@ -19,7 +19,7 @@ const PageHeader: React.FC<Props> = ({ title, kicker, lead, index = 1 }) => {
 
   if (theme === 'arcade') {
     return (
-      <motion.header initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-16">
+      <motion.header data-sec="hero" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-16">
         <div className="pixel-box p-6 md:p-10 relative">
           <div className="flex items-center justify-between text-[10px] md:text-xs text-[var(--c2)] mb-6 font-display">
             <span><span className="blink">▶</span> {t.tc.arcade.stage} {n}</span>
@@ -38,7 +38,7 @@ const PageHeader: React.FC<Props> = ({ title, kicker, lead, index = 1 }) => {
 
   if (theme === 'editorial') {
     return (
-      <motion.header initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-20 text-center max-w-4xl mx-auto">
+      <motion.header data-sec="hero" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-20 text-center max-w-4xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <span className="flex-1 border-t border-[var(--text-main)]" />
           <span className="text-xs uppercase tracking-[0.3em] text-[var(--accent-color)] font-bold">{kicker ?? `${t.tc.editorial.chapter} ${n}`}</span>
@@ -53,7 +53,7 @@ const PageHeader: React.FC<Props> = ({ title, kicker, lead, index = 1 }) => {
 
   if (theme === 'brutal') {
     return (
-      <motion.header initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-16 -mx-6 md:mx-0">
+      <motion.header data-sec="hero" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-16 -mx-6 md:mx-0">
         <div className="px-6 md:px-0">
           <span className="inline-block bg-[var(--text-main)] text-[var(--bg-tertiary)] font-display text-sm px-3 py-1 -rotate-2 mb-6">{n} / {kicker ?? t.nav.menu}</span>
           <h1 className="font-display text-[var(--text-main)] break-words" style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85, textShadow: '6px 6px 0 var(--bg-tertiary)' }}>{title}</h1>
@@ -67,7 +67,7 @@ const PageHeader: React.FC<Props> = ({ title, kicker, lead, index = 1 }) => {
   }
 
   return (
-    <motion.header initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-24">
+    <motion.header data-sec="hero" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-24">
       {kicker && <div className="text-xs font-bold uppercase tracking-widest text-[var(--text-secondary)] mb-6">{kicker}</div>}
       <h1 className="font-display text-5xl md:text-8xl font-bold uppercase text-[var(--text-main)] mb-6 break-words leading-[0.95]">{title}</h1>
       <div className="w-24 h-1 bg-[var(--text-main)] mb-8" />
