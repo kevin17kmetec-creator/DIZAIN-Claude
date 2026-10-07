@@ -6,6 +6,7 @@ import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
 import CommandPalette from './components/CommandPalette';
 import Easter from './components/Easter';
+import ThemeHint from './components/ThemeHint';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { usePageMeta } from './hooks/usePageMeta';
@@ -18,6 +19,8 @@ const AgencyPage = lazy(() => import('./components/AgencyPage'));
 const ContactPage = lazy(() => import('./components/ContactPage'));
 const DemoPage = lazy(() => import('./components/DemoPage'));
 const PrivacyPage = lazy(() => import('./components/PrivacyPage'));
+const TermsPage = lazy(() => import('./components/TermsPage'));
+const CompanyPage = lazy(() => import('./components/CompanyPage'));
 const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
 const ProjectPreviewPage = lazy(() => import('./components/ProjectPreviewPage'));
 
@@ -56,6 +59,8 @@ const Layout: React.FC = () => {
         <Route path={ROUTES.agency} element={<AgencyPage />} />
         <Route path={ROUTES.contact} element={<ContactPage />} />
         <Route path={ROUTES.privacy} element={<PrivacyPage />} />
+        <Route path={ROUTES.terms} element={<TermsPage />} />
+        <Route path={ROUTES.company} element={<CompanyPage />} />
         <Route path="/predogled/:id" element={<ProjectPreviewPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
@@ -75,6 +80,7 @@ const Layout: React.FC = () => {
       <ScrollToTop />
       <CommandPalette />
       <Easter />
+      {!isPreview && <ThemeHint />}
       {finePointer && !isPreview && <CustomCursor />}
 
       {isPreview ? (

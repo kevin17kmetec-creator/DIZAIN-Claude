@@ -5,6 +5,7 @@ import { Check, Globe, LogIn, ShoppingCart, ArrowUpRight, Image as ImageIcon, Ne
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTheme, THEME_IDS } from '../../contexts/ThemeContext';
 import { ROUTES } from '../../routes';
+import { priceView } from '../../lib/pricing';
 import { THEME_SWATCH } from '../ThemeSwitcher';
 
 type SiteType = 'site' | 'shop' | 'app';
@@ -24,7 +25,7 @@ const BLOCK_ICON: Record<Feature, React.ElementType> = {
 const BLOCK_ORDER: Feature[] = ['gallery', 'cart', 'booking', 'blog', 'cms', 'form'];
 
 const Configurator: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const [type, setType] = useState<SiteType>('site');
@@ -45,12 +46,14 @@ const Configurator: React.FC = () => {
   const { tierIndex, score } = useMemo(() => {
     let s = BASE[type];
     features.forEach((f) => (s += WEIGHT[f]));
-    let idx = s >= 6 ? 2 : s >= 2 || features.has('cms') ? 1 : 0;
-    if (type !== 'site') idx = 2;
+    const idx = s >= 6 ? 2 : s >= 2 || features.has('cms') ? 1 : 0;
     return { tierIndex: idx, score: s };
   }, [type, features]);
 
-  const tier = t.pricing.tiers[tierIndex];
+  // Trgovine in aplikacije nimajo javne cene: cena je odvisna od obsega in velikosti projekta
+  const isCustom = type !== 'site';
+  const tier = isCustom ? { name: t.pricing.custom.name } : t.pricing.tiers[tierIndex];
+  const view = priceView(tierIndex, language);
 
   const send = () => {
     const list = FEATURES.filter((f) => features.has(f)).map((f) => t.configurator.features[f]);
@@ -58,7 +61,7 @@ const Configurator: React.FC = () => {
       `${t.configurator.summaryType}: ${t.configurator.types[type].name}`,
       `${t.configurator.summaryFeatures}: ${list.length ? list.join(', ') : t.configurator.summaryNone}`,
       `${t.configurator.summaryStyle}: ${t.themes[theme].name}`,
-      `${t.configurator.recommended}: ${tier.name} (${t.configurator.from} ${tier.price})`,
+      isCustom ? `${t.configurator.recommended}: ${tier.name} (${t.pricing.custom.price})` : `${t.configurator.recommended}: ${tier.name} (${t.configurator.from} ${view.excl} ${t.pricing.exVat})`,
     ].join('\n');
     navigate(ROUTES.contact, { state: { project: t.configurator.summaryProject, details } });
   };
@@ -210,9 +213,14 @@ const Configurator: React.FC = () => {
             <div className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">{t.configurator.recommended}</div>
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
               <span className="text-2xl font-display font-bold text-[var(--text-main)]">{tier.name}</span>
-              <span className="text-[var(--text-secondary)]">{t.configurator.from} <span className="text-[var(--text-main)] font-bold text-xl">{tier.price}</span></span>
+              {isCustom ? (
+                <span className="text-[var(--text-main)] font-bold text-xl">{t.pricing.custom.price}</span>
+              ) : (
+                <span className="text-[var(--text-secondary)]">{t.configurator.from} <span className="text-[var(--text-main)] font-bold text-xl">{view.excl}</span> <span className="text-xs">{t.pricing.exVat}</span></span>
+              )}
             </div>
-            <p className="text-xs text-[var(--text-muted)] mt-3">{t.configurator.note}</p>
+            {!isCustom && view.incl && <p className="text-xs text-[var(--text-muted)] mt-1">{view.incl} {t.pricing.incVat}</p>}
+            <p className="text-xs text-[var(--text-muted)] mt-3">{isCustom ? t.configurator.customNote : t.configurator.note}</p>
             <button
               onClick={send}
               className="mt-5 w-full py-4 bg-[var(--text-main)] text-[var(--bg-main)] font-display font-bold uppercase tracking-[0.15em] text-xs hover:bg-[var(--text-secondary)] transition-colors flex items-center justify-center gap-2"

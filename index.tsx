@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// Pisave gostimo sami (brez Google Fonts). Teme naložijo svoje pisave ob prvi uporabi.
+import '@fontsource-variable/manrope';
 import App from './App';
 import './index.css';
 

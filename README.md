@@ -39,6 +39,18 @@ Skupne funkcije: iskalnik `Ctrl/Cmd + K` (ali `/`), krožni prehod med temami (V
 
 Nova tema: mapa `themes/<ime>/` z `Shell.tsx`, `Home.tsx`, `index.ts`, vpis v `themes/registry.ts`, `ThemeContext.tsx`, `translations.ts` in barvni žetoni v `index.css`.
 
+## Podatki, ki jih urejate na enem mestu
+
+| Datoteka | Kaj vsebuje |
+| --- | --- |
+| `data/company.ts` | podatki o podjetju (firma, naslov, matična, davčna). Prazna polja (`vatId`, `shareCapital`, `register`, `representative`) se ne prikažejo, dokler jih ne izpolnite |
+| `lib/pricing.ts` | izhodiščne cene brez DDV in stopnja DDV. Znesek z DDV se izračuna sam |
+| `data/projects.ts` | reference. `embed: true` prikaže živi predogled strani, `image` pa lastno sliko iz `public/` |
+| `data/testimonials.ts` | mnenja strank (razdelek se prikaže šele, ko dodate prvo pravo mnenje) |
+| `data/promo.ts` | promocijska koda za Konami skrivnost (privzeto izklopljena) |
+
+Pisave so vključene prek paketov `@fontsource`, zato brez klicev na Google. Teme nalagajo svoje pisave ob prvi uporabi.
+
 ## Struktura
 
 - `contexts/` teme (minimal, arcade, revija, brutalistično), jezik (SL/EN), `translations.ts`

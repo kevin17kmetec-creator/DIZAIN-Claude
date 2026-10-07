@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { PROMO } from '../data/promo';
 
 const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
 // Skrivnost: Konami koda sproži konfete in sporočilo
 const Easter: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [shown, setShown] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pos = useRef(0);
@@ -58,8 +59,16 @@ const Easter: React.FC = () => {
             initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }}
             className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[401] max-w-sm w-[90vw] p-5 bg-[var(--bg-main)] text-[var(--text-main)] border-2 border-[var(--text-main)] shadow-[6px_6px_0_0_var(--accent-color)] text-center"
           >
-            <div className="font-display font-bold tracking-widest mb-2">{t.easter.title}</div>
-            <p className="text-sm text-[var(--text-secondary)]">{t.easter.text}</p>
+            <div className="font-display font-bold tracking-widest mb-2">{PROMO.enabled ? t.easter.promoTitle : t.easter.title}</div>
+            {PROMO.enabled ? (
+              <>
+                <p className="text-sm text-[var(--text-secondary)] mb-3">{PROMO.description[language]}</p>
+                <p className="text-xs uppercase tracking-widest text-[var(--text-muted)]">{t.easter.promoLabel}</p>
+                <p className="font-mono text-xl font-bold select-all">{PROMO.code}</p>
+              </>
+            ) : (
+              <p className="text-sm text-[var(--text-secondary)]">{t.easter.text}</p>
+            )}
           </motion.div>
         </>
       )}

@@ -4,6 +4,9 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import Facts from './Facts';
 import PageHeader from './PageHeader';
+import TrustStrip from './TrustStrip';
+import AboutSection from './AboutSection';
+import Testimonials from './Testimonials';
 
 const AgencyPage: React.FC = () => {
   const { t } = useLanguage();
@@ -36,6 +39,9 @@ const AgencyPage: React.FC = () => {
         </div>
       </div>
 
+      <TrustStrip />
+      <AboutSection />
+      <Testimonials />
       <Facts />
     </div>
   );

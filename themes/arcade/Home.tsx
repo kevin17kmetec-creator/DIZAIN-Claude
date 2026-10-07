@@ -9,8 +9,13 @@ import Marquee from '../../components/fx/Marquee';
 import CountUp from '../../components/CountUp';
 import ThemePicker from '../../components/ThemePicker';
 import Pricing from '../../components/Pricing';
+import TrustStrip from '../../components/TrustStrip';
+import Testimonials from '../../components/Testimonials';
+import Faq from '../../components/Faq';
 import ContactForm from '../../components/ContactForm';
 import Breakout from './Breakout';
+import ProjectMedia from '../../components/ProjectMedia';
+import { Project } from '../../data/projects';
 import { sfx } from '../../lib/sfx';
 
 const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -212,14 +217,14 @@ const PowerUps: React.FC = () => {
 /* ------------------------------------------------------------------ */
 /* 4. KASETE (reference)                                               */
 /* ------------------------------------------------------------------ */
-const Cartridge: React.FC<{ title: string; sub: string; image?: string; to?: string; color: string; imageClass?: string }> = ({ title, sub, image, to, color, imageClass }) => {
+const Cartridge: React.FC<{ title: string; sub: string; project?: Project; to?: string; color: string }> = ({ title, sub, project, to, color }) => {
   const { t } = useLanguage();
   const body = (
     <div className="group relative w-full max-w-[18rem] mx-auto transition-transform duration-300 hover:-translate-y-3" onMouseEnter={() => sfx.blip()}>
       <div className="relative border-4 border-[var(--text-main)] bg-[var(--bg-tertiary)] pt-5 px-4 pb-4" style={{ boxShadow: `6px 6px 0 ${color}`, clipPath: 'polygon(0 12px, 12px 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)' }}>
         <div className="absolute top-0 inset-x-6 h-3 bg-[var(--text-main)]/20" aria-hidden="true" />
         <div className="crt-screen border-4 border-[var(--bg-main)] aspect-[4/3] bg-black grid place-items-center">
-          {image ? <img src={image} alt={title} referrerPolicy="no-referrer" loading="lazy" className={`w-full h-full ${imageClass || 'object-cover'}`} /> : <span className="font-display text-3xl text-[var(--text-muted)]">?</span>}
+          {project ? <div className="relative w-full h-full"><ProjectMedia project={project} /></div> : <span className="font-display text-3xl text-[var(--text-muted)]">?</span>}
         </div>
         <div className="mt-3 font-display text-[10px] md:text-xs text-[var(--text-main)] truncate">{title}</div>
         <div className="font-display text-[8px] md:text-[9px] mt-1" style={{ color }}>{sub}</div>
@@ -239,7 +244,7 @@ const Cartridges: React.FC = () => {
       <SectionTitle title={a.cartTitle} hint={a.cartHint} color="var(--c1)" />
       <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {sortedProjects.slice(0, 4).map((p, i) => (
-          <Cartridge key={p.id} title={p.title} sub={p.specs.join(' · ')} image={p.image} imageClass={p.imageClass} to={p.link ? ROUTES.preview(p.id) : undefined} color={['var(--c1)', 'var(--c2)', 'var(--c4)'][i % 3]} />
+          <Cartridge key={p.id} title={p.title} sub={p.specs.length ? p.specs.join(' · ') : p.category[language]} project={p} to={p.link ? ROUTES.preview(p.id) : undefined} color={['var(--c1)', 'var(--c2)', 'var(--c4)'][i % 3]} />
         ))}
         <Cartridge title="???" sub={t.portfolio.more} color="var(--c6)" />
         <Cartridge title="???" sub={language === 'sl' ? 'KMALU' : 'SOON'} color="var(--c5)" />
@@ -340,13 +345,16 @@ const Home: React.FC = () => {
       <Marquee speed={28} className="border-y-4 border-[var(--border-color)] bg-[var(--bg-secondary)] py-3 font-display text-xs text-[var(--c6)]">
         {[...t.hero.words, t.hero.pitch].map((w) => <span key={w} className="px-8 whitespace-nowrap">★ {w.toUpperCase()}</span>)}
       </Marquee>
+      <TrustStrip />
       <LevelMap />
       <PowerUps />
       <Cartridges />
       <Achievements />
+      <Testimonials />
       <Pricing />
       <Options />
       <Bonus />
+      <Faq />
       <InsertCoin />
     </>
   );

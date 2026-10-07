@@ -5,6 +5,9 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import { PaletteButton } from '../../components/CommandPalette';
 import { ROUTES } from '../../routes';
+import LegalLine from '../../components/LegalLine';
+import LegalLinks from '../../components/LegalLinks';
+import { COMPANY } from '../../data/company';
 
 // EDITORIAL: stran je revija. Naslovnica z žigom, rubrike v vrstici, kolofon na dnu.
 const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -95,14 +98,15 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] mb-3 font-bold">{t.nav.contact}</div>
-            <ul className="space-y-2"><li><a className="hover:text-[var(--accent-color)]" href="mailto:dizain.slo@gmail.com">dizain.slo@gmail.com</a></li><li>Karantanska ulica 28, Maribor</li></ul>
+            <ul className="space-y-2"><li><a className="hover:text-[var(--accent-color)]" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></li><li>{COMPANY.street}, {COMPANY.city}</li></ul>
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] mb-3 font-bold">{e.colophon}</div>
-            <p>© {new Date().getFullYear()} DIZAIN. {t.footer.rights}</p>
-            <Link to={ROUTES.privacy} className="underline mt-2 inline-block">{t.footer.privacy}</Link>
+            <p>© {new Date().getFullYear()} {COMPANY.shortName} {t.footer.rights}</p>
+            <LegalLinks className="mt-2 flex flex-col gap-1" separator="" linkClassName="underline hover:text-[var(--accent-color)]" />
           </div>
         </div>
+        <LegalLine className="max-w-6xl mx-auto mt-10 pt-6 border-t border-[var(--border-color)] text-xs text-[var(--text-muted)] leading-relaxed" />
       </footer>
     </>
   );

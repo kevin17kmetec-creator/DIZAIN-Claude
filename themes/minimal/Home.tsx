@@ -7,6 +7,10 @@ import Facts from '../../components/Facts';
 import TryIt from '../../components/TryIt';
 import Contact from '../../components/Contact';
 import Marquee from '../../components/fx/Marquee';
+import TrustStrip from '../../components/TrustStrip';
+import PricingTeaser from '../../components/PricingTeaser';
+import Testimonials from '../../components/Testimonials';
+import Faq from '../../components/Faq';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Home: React.FC = () => {
@@ -20,13 +24,17 @@ const Home: React.FC = () => {
           <span key={`${w}-${i}`} className="font-display text-4xl md:text-6xl uppercase px-8 whitespace-nowrap text-outline">{w}</span>
         ))}
       </Marquee>
+      <TrustStrip />
       <Portfolio />
       <Process />
+      <PricingTeaser />
+      <Testimonials />
       <TryIt />
       <div id="agency">
         <WhyUs />
         <Facts />
       </div>
+      <Faq />
       <Contact />
     </>
   );

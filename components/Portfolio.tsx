@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { sortedProjects, Project } from '../data/projects';
+import ProjectMedia from './ProjectMedia';
 import { ROUTES } from '../routes';
 
 export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
@@ -30,10 +31,10 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
         <motion.div style={{ x, opacity, scale }} className="relative will-change-transform group">
           {to ? (
             <Link to={to} aria-label={`${project.title} - ${t.portfolio.livePreview}`} className="block">
-              <ProjectImage project={project} alt={`${project.title} - ${project.category}`} />
+              <ProjectImage project={project} alt={project.title} />
             </Link>
           ) : (
-            <ProjectImage project={project} alt={`${project.title} - ${project.category}`} />
+            <ProjectImage project={project} alt={project.title} />
           )}
 
           <div className={`flex gap-2 mt-4 ${!isEven ? 'justify-end' : ''}`}>
@@ -55,8 +56,8 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
       </div>
 
       <div className={`w-full md:w-1/3 flex flex-col ${!isEven ? 'md:items-end md:text-right' : ''}`}>
-        <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest mb-4">{project.category}</span>
-        <h3 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-main)] mb-6 break-words">
+        <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest mb-4">{project.category[language]}</span>
+        <h3 className="text-3xl md:text-5xl font-display font-bold text-[var(--text-main)] mb-6 break-words">
           {to ? <Link to={to} className="hover:text-[var(--text-secondary)] transition-colors">{project.title}</Link> : project.title}
         </h3>
         <p className="text-[var(--text-secondary)] text-lg leading-relaxed mb-8 max-w-sm">{project.description[language]}</p>
@@ -72,16 +73,9 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
   );
 };
 
-const ProjectImage: React.FC<{ project: Project; alt: string }> = ({ project, alt }) => (
-  <div className="overflow-hidden relative h-[50vh] md:h-[70vh] border border-[var(--border-color)] bg-[var(--bg-secondary)] shadow-2xl">
-    <img
-      src={project.image}
-      alt={alt}
-      referrerPolicy="no-referrer"
-      className={`w-full h-full ${project.imageClass || 'object-cover'} opacity-90 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100`}
-      loading="lazy"
-      decoding="async"
-    />
+const ProjectImage: React.FC<{ project: Project; alt: string }> = ({ project }) => (
+  <div className="overflow-hidden relative h-[44vh] md:h-[60vh] border border-[var(--border-color)] bg-[var(--bg-secondary)] shadow-2xl">
+    <ProjectMedia project={project} className="transition-all duration-700 group-hover:scale-105" />
   </div>
 );
 
@@ -101,7 +95,7 @@ const Portfolio: React.FC = () => {
           <p className="mt-6 text-[var(--text-secondary)] text-lg max-w-xl mx-auto md:mx-0">{t.portfolio.lead}</p>
         </div>
 
-        <div className="flex flex-col gap-32 md:gap-48">
+        <div className="flex flex-col gap-24 md:gap-36">
           {displayed.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

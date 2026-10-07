@@ -84,21 +84,19 @@ const Hero: React.FC = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-[var(--text-main)] text-lg md:text-3xl font-display font-bold tracking-[0.3em] uppercase text-center drop-shadow-2xl max-w-4xl leading-relaxed"
+            className="text-[var(--text-main)] text-2xl md:text-5xl lg:text-6xl font-display font-bold uppercase text-center drop-shadow-2xl max-w-5xl leading-tight tracking-wide"
           >
-            {t.hero.subtitle}
+            {t.hero.build} <RotatingWord words={t.hero.words} />
           </motion.h2>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-6 text-center"
+            className="mt-5 text-center"
           >
-            <p className="text-[var(--text-main)] text-xl md:text-2xl font-light">
-              {t.hero.build} <RotatingWord words={t.hero.words} />
-            </p>
-            <p className="mt-2 text-[var(--text-secondary)] text-sm md:text-base max-w-xl mx-auto">{t.hero.pitch}</p>
+            <p className="text-[var(--text-secondary)] text-[11px] md:text-sm font-display uppercase tracking-[0.35em]">{t.hero.subtitle}</p>
+            <p className="mt-4 text-[var(--text-main)] text-base md:text-xl font-light max-w-2xl mx-auto">{t.hero.pitch}</p>
           </motion.div>
 
           <motion.div

@@ -7,6 +7,9 @@ import ThemeSwitcher from '../../components/ThemeSwitcher';
 import { PaletteButton } from '../../components/CommandPalette';
 import PixelSprite from '../../components/fx/PixelSprite';
 import { ROUTES } from '../../routes';
+import LegalLine from '../../components/LegalLine';
+import LegalLinks from '../../components/LegalLinks';
+import { COMPANY } from '../../data/company';
 import { sfx } from '../../lib/sfx';
 
 const hiScore = () => { try { return Number(localStorage.getItem('dizain-hi') || 0); } catch { return 0; } };
@@ -104,10 +107,12 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <footer className="relative z-10 border-t-4 border-[var(--border-color)] bg-[var(--bg-secondary)] pb-28 pt-10 text-center font-display">
         <div className="text-[var(--c4)] text-xs md:text-sm mb-3" style={{ textShadow: '2px 2px 0 var(--c2)' }}>{a.continueQ}</div>
         <Link to={ROUTES.contact} className="inline-block text-[var(--c6)] text-3xl md:text-5xl blink" aria-label={t.hero.cta}>9</Link>
-        <p className="mt-6 text-[10px] md:text-xs text-[var(--text-secondary)]">© {new Date().getFullYear()} DIZAIN · {t.footer.rights}</p>
+        <p className="mt-6 text-[10px] md:text-xs text-[var(--text-secondary)]">© {new Date().getFullYear()} {COMPANY.shortName} · {t.footer.rights}</p>
         <p className="mt-2 text-lg text-[var(--text-muted)] font-sans">
-          <a href="mailto:dizain.slo@gmail.com" className="hover:text-[var(--text-main)]">dizain.slo@gmail.com</a> · <Link to={ROUTES.privacy} className="underline">{t.footer.privacy}</Link>
+          <a href={`mailto:${COMPANY.email}`} className="hover:text-[var(--text-main)]">{COMPANY.email}</a>
         </p>
+        <LegalLinks className="mt-1 text-lg text-[var(--text-muted)] font-sans" />
+        <LegalLine className="mt-3 px-4 text-base md:text-lg text-[var(--text-muted)] font-sans max-w-4xl mx-auto leading-tight" />
         <p className="mt-3 text-sm text-[var(--text-muted)] font-sans">{a.keys}</p>
       </footer>
       <span className="sr-only" aria-live="polite">{pathname}</span>

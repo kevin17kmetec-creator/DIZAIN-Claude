@@ -11,6 +11,11 @@ import SplitReveal from '../../components/fx/SplitReveal';
 import CountUp from '../../components/CountUp';
 import ServiceList from '../../components/ServiceList';
 import ContactForm from '../../components/ContactForm';
+import ProjectMedia from '../../components/ProjectMedia';
+import TrustStrip from '../../components/TrustStrip';
+import PricingTeaser from '../../components/PricingTeaser';
+import Testimonials from '../../components/Testimonials';
+import Faq from '../../components/Faq';
 import TryIt from '../../components/TryIt';
 
 // Trak, ki se ob hitrem drsenju nagne (kinetična tipografija)
@@ -132,8 +137,8 @@ const Works: React.FC = () => {
         <motion.div whileHover={{ rotate: -1.5, x: -6, y: -6 }} className="lg:col-span-8">
           <Link to={ROUTES.preview(p.id)} className="group block border-[3px] border-[var(--text-main)] bg-[var(--bg-secondary)] hard-shadow-lg">
             <div className="aspect-[16/10] bg-black relative overflow-hidden border-b-[3px] border-[var(--text-main)]">
-              <img src={p.image} alt={`${p.title} - ${p.category}`} referrerPolicy="no-referrer" loading="lazy" className={`w-full h-full ${p.imageClass || 'object-cover'} group-hover:scale-105 transition-transform duration-500`} />
-              <span className="absolute top-4 left-4 bg-[var(--bg-tertiary)] border-[3px] border-[var(--text-main)] px-3 py-1 font-display text-sm">{p.category}</span>
+              <ProjectMedia project={p} className="group-hover:scale-105 transition-transform duration-500" />
+              <span className="absolute top-4 left-4 bg-[var(--bg-tertiary)] border-[3px] border-[var(--text-main)] px-3 py-1 font-display text-sm">{p.category[language]}</span>
             </div>
             <div className="p-5 flex items-center justify-between gap-4">
               <h3 className="font-display text-3xl md:text-6xl">{p.title}</h3>
@@ -209,12 +214,16 @@ const Home: React.FC = () => (
   <>
     <Hero />
     <Strips />
+    <TrustStrip />
     <Services />
     <StackedProcess />
     <Works />
     <Numbers />
+    <PricingTeaser />
     <Why />
+    <Testimonials />
     <TryIt />
+    <Faq />
     <SayHi />
   </>
 );

@@ -8,6 +8,11 @@ import SplitReveal from '../../components/fx/SplitReveal';
 import HScroll from '../../components/fx/HScroll';
 import Marquee from '../../components/fx/Marquee';
 import CountUp from '../../components/CountUp';
+import ProjectMedia from '../../components/ProjectMedia';
+import TrustStrip from '../../components/TrustStrip';
+import PricingTeaser from '../../components/PricingTeaser';
+import Testimonials from '../../components/Testimonials';
+import Faq from '../../components/Faq';
 import ServiceList from '../../components/ServiceList';
 import ContactForm from '../../components/ContactForm';
 
@@ -155,10 +160,10 @@ const Feature: React.FC = () => {
         </div>
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           <motion.div style={{ clipPath: clip }} className="lg:col-span-8 relative overflow-hidden aspect-[4/3] bg-[var(--bg-tertiary)]">
-            <motion.img src={p.image} alt={`${p.title} - ${p.category}`} referrerPolicy="no-referrer" loading="lazy" style={{ y, scale: 1.2 }} className={`absolute inset-0 w-full h-full ${p.imageClass || 'object-cover'}`} />
+            <motion.div style={{ y, scale: 1.2 }} className="absolute inset-0"><ProjectMedia project={p} /></motion.div>
           </motion.div>
           <div className="lg:col-span-4">
-            <div className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-3">{p.category}</div>
+            <div className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-3">{p.category[language]}</div>
             <h3 className="font-display text-4xl md:text-5xl text-[var(--text-main)] mb-4 leading-tight">{p.title}</h3>
             <p className="font-display text-lg text-[var(--text-secondary)] leading-relaxed dropcap mb-6">{p.description[language]}</p>
             <div className="flex gap-2 flex-wrap mb-6">{p.specs.map((s) => <span key={s} className="text-[10px] uppercase tracking-[0.2em] border border-[var(--text-main)] px-2 py-1">{s}</span>)}</div>
@@ -216,10 +221,14 @@ const Home: React.FC = () => {
       <Marquee speed={45} className="border-y border-[var(--text-main)] py-3 bg-[var(--text-main)] text-[var(--bg-main)]">
         {items.map((w, i) => <span key={`${w}-${i}`} className="font-display italic text-2xl px-8 whitespace-nowrap">{w} <span className="not-italic text-[var(--accent-color)]">❦</span></span>)}
       </Marquee>
+      <TrustStrip />
       <Article />
       <Chapters />
       <Feature />
       <Index />
+      <PricingTeaser />
+      <Testimonials />
+      <Faq />
       <Letter />
     </>
   );

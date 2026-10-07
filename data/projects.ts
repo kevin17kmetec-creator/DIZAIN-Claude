@@ -1,22 +1,36 @@
 export interface Project {
   id: number;
   title: string;
-  category: string;
-  image: string;
+  category: { sl: string; en: string };
   description: { sl: string; en: string };
   specs: string[];
-  date: string; // YYYY-MM-DD, za razvrščanje
+  date: string; // YYYY-MM-DD, samo za razvrščanje (najnovejši prvi)
   link?: string;
-  imageClass?: string;
+  // Slika (npr. '/references/ime.webp' v mapi public). Če je ni, se uporabi živi predogled (embed) ali nadomestni prikaz.
+  image?: string;
+  // Ali se stran lahko prikaže v okvirju (iframe). Nastavite na true samo, če stran vdelavo dovoljuje.
+  embed?: boolean;
 }
 
-// Sem dodajajte nove projekte. Najnovejši se prikaže prvi.
+// Sem dodajajte nove projekte.
 export const projects: Project[] = [
+  {
+    id: 1,
+    title: 'Za srce MB',
+    category: { sl: 'Spletna stran', en: 'Website' },
+    description: {
+      sl: 'Spletna stran, ki jo je izdelal DIZAIN. Oglejte si jo v živo.',
+      en: 'A website built by DIZAIN. See it live.',
+    },
+    specs: [],
+    date: '2026-10-01',
+    link: 'https://www.zasrce-mb.si/',
+    embed: false,
+  },
   {
     id: 0,
     title: 'ZK Photo Lab',
-    category: 'Photography & Design',
-    image: 'https://drive.google.com/thumbnail?id=1E4UqHuK74vn71mwMgxuDh3TWY4lCvCil&sz=w1920',
+    category: { sl: 'Fotografija in oblikovanje', en: 'Photography & Design' },
     description: {
       sl: 'Spletna platforma za vizualno pripovedovanje zgodb za ZK Photo Lab.',
       en: 'Immersive visual storytelling platform for ZK Photo Lab.',
@@ -24,7 +38,7 @@ export const projects: Project[] = [
     specs: ['React', 'Gallery', 'UX/UI'],
     date: '2024-02-15',
     link: 'https://www.zkphotolab.si/',
-    imageClass: 'object-contain p-4 bg-black',
+    embed: true,
   },
 ];
 

@@ -7,6 +7,9 @@ import ThemeSwitcher from '../../components/ThemeSwitcher';
 import { PaletteButton } from '../../components/CommandPalette';
 import Marquee from '../../components/fx/Marquee';
 import { ROUTES } from '../../routes';
+import LegalLine from '../../components/LegalLine';
+import LegalLinks from '../../components/LegalLinks';
+import { COMPANY } from '../../data/company';
 
 // BRUTAL: navigacija je navpični trak ob levem robu, vsebina je surova in glasna.
 const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -90,14 +93,15 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <p>{t.footer.tagline}</p>
           </div>
           <div>
-            <a href="mailto:dizain.slo@gmail.com" className="block hover:text-[var(--bg-tertiary)] underline decoration-4">dizain.slo@gmail.com</a>
-            <span className="block">Karantanska ulica 28, Maribor</span>
+            <a href={`mailto:${COMPANY.email}`} className="block hover:text-[var(--bg-tertiary)] underline decoration-4">{COMPANY.email}</a>
+            <span className="block">{COMPANY.street}, {COMPANY.city}</span>
           </div>
           <div className="md:text-right">
-            <p>© {new Date().getFullYear()} DIZAIN. {t.footer.rights}</p>
-            <Link to={ROUTES.privacy} className="underline decoration-4 hover:text-[var(--bg-tertiary)]">{t.footer.privacy}</Link>
+            <p>© {new Date().getFullYear()} {COMPANY.shortName} {t.footer.rights}</p>
+            <LegalLinks className="mt-1" linkClassName="underline decoration-4 hover:text-[var(--bg-tertiary)]" />
           </div>
         </div>
+        <LegalLine className="px-6 md:px-12 pb-10 text-sm opacity-80 leading-relaxed" />
       </footer>
     </>
   );

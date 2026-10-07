@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Manrope", sans-serif;
+  --font-sans: "Manrope Variable", "Manrope", sans-serif;
   --font-display: "Syncopate", sans-serif;
   --font-logo: "Montserrat", sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
@@ -30,7 +30,7 @@
   --bg-tertiary: #141414;
   --text-main: #ffffff;
   --text-secondary: #a3a3a3;
-  --text-muted: #6b6b6b;
+  --text-muted: #8a8a8a;
   --border-color: rgba(255, 255, 255, 0.1);
   --border-color-hover: rgba(255, 255, 255, 0.2);
   --accent-color: #ffffff;
@@ -81,15 +81,15 @@
 
 /* LUKSUZNI / EDITORIAL: revijalen, topel, serifen */
 :root[data-theme="editorial"] {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-logo: "Playfair Display", Georgia, serif;
+  --font-sans: "Manrope Variable", "Manrope", sans-serif;
+  --font-display: "Playfair Display Variable", "Playfair Display", Georgia, serif;
+  --font-logo: "Playfair Display Variable", "Playfair Display", Georgia, serif;
   --bg-main: #f4efe6;
   --bg-secondary: #ebe4d6;
   --bg-tertiary: #ddd3bf;
   --text-main: #1c1a17;
   --text-secondary: #5b544a;
-  --text-muted: #85796a;
+  --text-muted: #6e6457;
   --border-color: rgba(28, 26, 23, 0.18);
   --border-color-hover: rgba(28, 26, 23, 0.4);
   --accent-color: #8a5a2b;
@@ -103,7 +103,7 @@
 
 /* BRUTALIST: surovo, glasno, debele črte, rumena */
 :root[data-theme="brutal"] {
-  --font-sans: "Space Grotesk", sans-serif;
+  --font-sans: "Space Grotesk Variable", "Space Grotesk", sans-serif;
   --font-display: "Archivo Black", "Space Grotesk", sans-serif;
   --font-logo: "Archivo Black", sans-serif;
   --bg-main: #f1efe7;

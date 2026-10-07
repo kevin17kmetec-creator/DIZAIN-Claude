@@ -6,5 +6,7 @@ export const ROUTES = {
   agency: '/agencija',
   contact: '/kontakt',
   privacy: '/zasebnost',
+  terms: '/splosni-pogoji',
+  company: '/podjetje',
   preview: (id: number | string) => `/predogled/${id}`,
 } as const;

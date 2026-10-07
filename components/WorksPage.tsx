@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { sortedProjects, Project } from '../data/projects';
+import ProjectMedia from './ProjectMedia';
 import { ROUTES } from '../routes';
 import PageHeader from './PageHeader';
 import PixelSprite from './fx/PixelSprite';
@@ -13,9 +14,7 @@ import { sfx } from '../lib/sfx';
 
 const PROJECTS_PER_PAGE = 6;
 
-const Img: React.FC<{ p: Project; className?: string }> = ({ p, className = '' }) => (
-  <img src={p.image} alt={`${p.title} - ${p.category}`} referrerPolicy="no-referrer" loading="lazy" decoding="async" className={`w-full h-full ${p.imageClass || 'object-cover'} ${className}`} />
-);
+const Img: React.FC<{ p: Project; className?: string }> = ({ p, className = '' }) => <ProjectMedia project={p} className={className} />;
 
 const Wrap: React.FC<{ p: Project; className?: string; children: React.ReactNode }> = ({ p, className, children }) =>
   p.link ? <Link to={ROUTES.preview(p.id)} className={className} onClick={() => sfx.select()}>{children}</Link> : <div className={className}>{children}</div>;
@@ -44,7 +43,7 @@ const WorksPage: React.FC = () => {
             <Wrap key={p.id} p={p} className="block group">
               <div className="pixel-box p-4 transition-transform group-hover:-translate-y-2">
                 <div className="flex justify-between font-display text-[10px] text-[var(--c2)] mb-3"><span>#{String(startIndex + i + 1).padStart(2, '0')}</span><span className="text-[var(--c6)]">{t.tc.arcade.hi} {String(9000 - i * 700).padStart(5, '0')}</span></div>
-                <div className="crt-screen aspect-[4/3] bg-black border-4 border-[var(--bg-main)]"><Img p={p} /></div>
+                <div className="crt-screen relative aspect-[4/3] bg-black border-4 border-[var(--bg-main)]"><Img p={p} /></div>
                 <h3 className="font-display text-sm mt-4 text-[var(--text-main)]">{p.title}</h3>
                 <p className="text-xl text-[var(--text-secondary)] leading-tight mt-2">{p.description[language]}</p>
                 <div className="mt-4 flex items-center justify-between font-display text-[10px] text-[var(--c4)]"><span className="blink">▶ {t.tc.arcade.insert}</span><PixelSprite sprite="coin" size={3} /></div>
@@ -61,10 +60,10 @@ const WorksPage: React.FC = () => {
             <motion.article key={p.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="grid md:grid-cols-12 gap-8 py-12 border-t border-[var(--border-color)] first:border-t-0">
               <div className={`md:col-span-7 ${i % 2 ? 'md:order-2' : ''}`}>
                 <Wrap p={p} className="block overflow-hidden"><div className="aspect-[4/3] bg-[var(--bg-tertiary)]"><Img p={p} className="transition-transform duration-[1200ms] hover:scale-105" /></div></Wrap>
-                <p className="mt-2 text-xs italic text-[var(--text-muted)]">{p.title}, {p.category}. Foto: DIZAIN.</p>
+                <p className="mt-2 text-xs italic text-[var(--text-muted)]">{p.title}, {p.category[language]}.</p>
               </div>
               <div className="md:col-span-5 flex flex-col justify-center">
-                <div className="text-xs uppercase tracking-[0.25em] text-[var(--accent-color)] font-bold mb-3">{p.category} · № {startIndex + i + 1}</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[var(--accent-color)] font-bold mb-3">{p.category[language]} · № {startIndex + i + 1}</div>
                 <h2 className="font-display text-4xl md:text-5xl text-[var(--text-main)] mb-4 leading-tight">{p.title}</h2>
                 <p className="dropcap text-[var(--text-secondary)] leading-relaxed mb-5">{p.description[language]}</p>
                 {p.link && <Link to={ROUTES.preview(p.id)} className="self-start text-xs uppercase tracking-[0.2em] border-b border-[var(--text-main)] pb-1 text-[var(--text-main)]">{t.tc.editorial.readMore} →</Link>}
@@ -107,7 +106,7 @@ const WorksPage: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest block mb-2">{project.category}</span>
+                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest block mb-2">{project.category[language]}</span>
                     <h3 className="text-3xl font-display font-bold text-[var(--text-main)] group-hover:text-[var(--text-secondary)] transition-colors">{project.title}</h3>
                     <p className="mt-3 text-[var(--text-secondary)] max-w-md">{project.description[language]}</p>
                   </div>
