@@ -91,7 +91,6 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
           <div>
             <a href="mailto:dizain.slo@gmail.com" className="block hover:text-[var(--bg-tertiary)] underline decoration-4">dizain.slo@gmail.com</a>
-            <a href="tel:+38670311260" className="block hover:text-[var(--bg-tertiary)] underline decoration-4">+386 70 311 260</a>
             <span className="block">Karantanska ulica 28, Maribor</span>
           </div>
           <div className="md:text-right">

@@ -324,7 +324,7 @@ const InsertCoin: React.FC = () => {
           <div className="text-[var(--c6)] mb-6 flex justify-center lg:justify-start"><PixelSprite sprite="coin" size={10} accent="#fff" /></div>
           <h2 className="font-display text-[var(--text-main)] blink" style={{ fontSize: 'clamp(1.6rem,6vw,3.2rem)', textShadow: '4px 4px 0 var(--c4)' }}>{a.coinTitle}</h2>
           <p className="mt-4 text-2xl text-[var(--text-secondary)]">{a.coinSub}</p>
-          <p className="mt-8 font-display text-[10px] leading-loose text-[var(--c2)]">dizain.slo@gmail.com<br />+386 70 311 260<br />Maribor, SI</p>
+          <p className="mt-8 font-display text-[10px] leading-loose text-[var(--c2)]">dizain.slo@gmail.com<br />Maribor, SI</p>
         </div>
         <div className="pixel-box p-6 md:p-8"><ContactForm /></div>
       </div>

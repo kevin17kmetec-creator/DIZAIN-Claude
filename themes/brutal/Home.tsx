@@ -197,7 +197,7 @@ const SayHi: React.FC = () => {
           <Magnetic strength={0.2}>
             <a href="mailto:dizain.slo@gmail.com" className="inline-block bg-[var(--text-main)] text-[var(--bg-tertiary)] font-display text-xl md:text-3xl px-6 py-5 border-[3px] border-[var(--text-main)] hard-shadow-lg hover:bg-[var(--accent-color)] hover:text-[var(--text-main)] transition-colors break-all">dizain.slo@gmail.com ↗</a>
           </Magnetic>
-          <p className="mt-6 font-mono font-bold">+386 70 311 260<br />Karantanska ulica 28, Maribor</p>
+          <p className="mt-6 font-mono font-bold">Karantanska ulica 28, Maribor</p>
         </div>
         <div className="lg:col-span-7 bg-[var(--bg-secondary)] border-[3px] border-[var(--text-main)] hard-shadow-lg p-6 md:p-10"><ContactForm /></div>
       </div>

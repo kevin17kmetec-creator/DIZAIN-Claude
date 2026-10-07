@@ -33,8 +33,6 @@ const ContactPage: React.FC = () => {
               <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--text-main)] mb-4">{t.contact.contactLabel}</h2>
               <p className="text-[var(--text-secondary)]">
                 <a href="mailto:dizain.slo@gmail.com" className="hover:text-[var(--text-main)] transition-colors">dizain.slo@gmail.com</a>
-                <br />
-                <a href="tel:+38670311260" className="hover:text-[var(--text-main)] transition-colors">+386 70 311 260</a>
               </p>
             </div>
           </motion.div>

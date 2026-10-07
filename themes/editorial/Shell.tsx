@@ -95,7 +95,7 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] mb-3 font-bold">{t.nav.contact}</div>
-            <ul className="space-y-2"><li><a className="hover:text-[var(--accent-color)]" href="mailto:dizain.slo@gmail.com">dizain.slo@gmail.com</a></li><li><a className="hover:text-[var(--accent-color)]" href="tel:+38670311260">+386 70 311 260</a></li><li>Karantanska ulica 28, Maribor</li></ul>
+            <ul className="space-y-2"><li><a className="hover:text-[var(--accent-color)]" href="mailto:dizain.slo@gmail.com">dizain.slo@gmail.com</a></li><li>Karantanska ulica 28, Maribor</li></ul>
           </div>
           <div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] mb-3 font-bold">{e.colophon}</div>

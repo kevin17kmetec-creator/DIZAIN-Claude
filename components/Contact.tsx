@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import ContactForm from './ContactForm';
 
@@ -29,12 +29,6 @@ const Contact: React.FC = () => {
                   <Mail size={20} />
                 </div>
                 <span className="text-lg md:text-xl font-display break-all">dizain.slo@gmail.com</span>
-              </a>
-              <a href="tel:+38670311260" className="group flex items-center gap-4 text-[var(--text-main)] hover:text-[var(--text-secondary)] transition-colors">
-                <div className="keep-round w-12 h-12 rounded-full border border-[var(--border-color)] flex items-center justify-center group-hover:bg-[var(--text-main)] group-hover:text-[var(--bg-main)] transition-all">
-                  <Phone size={20} />
-                </div>
-                <span className="text-lg md:text-xl font-display">+386 70 311 260</span>
               </a>
             </div>
           </motion.div>

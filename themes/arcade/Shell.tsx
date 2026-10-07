@@ -106,7 +106,7 @@ const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Link to={ROUTES.contact} className="inline-block text-[var(--c6)] text-3xl md:text-5xl blink" aria-label={t.hero.cta}>9</Link>
         <p className="mt-6 text-[10px] md:text-xs text-[var(--text-secondary)]">© {new Date().getFullYear()} DIZAIN · {t.footer.rights}</p>
         <p className="mt-2 text-lg text-[var(--text-muted)] font-sans">
-          <a href="mailto:dizain.slo@gmail.com" className="hover:text-[var(--text-main)]">dizain.slo@gmail.com</a> · <a href="tel:+38670311260" className="hover:text-[var(--text-main)]">+386 70 311 260</a> · <Link to={ROUTES.privacy} className="underline">{t.footer.privacy}</Link>
+          <a href="mailto:dizain.slo@gmail.com" className="hover:text-[var(--text-main)]">dizain.slo@gmail.com</a> · <Link to={ROUTES.privacy} className="underline">{t.footer.privacy}</Link>
         </p>
         <p className="mt-3 text-sm text-[var(--text-muted)] font-sans">{a.keys}</p>
       </footer>

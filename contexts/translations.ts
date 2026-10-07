@@ -12,7 +12,7 @@ const sl = {
   themes: {
     minimal: { name: 'Minimalistično', desc: 'Čist, miren, privzet videz' },
     arcade: { name: 'Arcade', desc: 'Retro igralni avtomat z neonom' },
-    editorial: { name: 'Luksuzno', desc: 'Revijalna, topla, serifna oblika' },
+    editorial: { name: 'Revija', desc: 'Tiskana revija: serifi, stolpci, topli papir' },
     brutal: { name: 'Brutalistično', desc: 'Surovo, glasno, debele črte in rumena' },
     light: 'Svetli način',
     dark: 'Temni način',
@@ -359,7 +359,7 @@ const en: Translations = {
   themes: {
     minimal: { name: 'Minimal', desc: 'Clean, calm default look' },
     arcade: { name: 'Arcade', desc: 'Retro arcade cabinet with neon' },
-    editorial: { name: 'Luxury', desc: 'Editorial, warm, serif look' },
+    editorial: { name: 'Magazine', desc: 'Printed magazine: serifs, columns, warm paper' },
     brutal: { name: 'Brutalist', desc: 'Raw, loud, thick lines and yellow' },
     light: 'Light mode',
     dark: 'Dark mode',

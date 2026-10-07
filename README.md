@@ -32,7 +32,7 @@ Vsaka tema ima svojo lupino (navigacija, okvir, noga) in svojo domačo stran. Po
 | --- | --- |
 | Minimalistično | zgornja vrstica, središčna postavitev, temno/svetlo |
 | Arcade | HUD s točkami, spodnji dok (tipke 1-5), izbira nivojev, kasete, mini igra Breakout, zvok (privzeto izklopljen) |
-| Luksuzno | revija: žig, kazalo, stolpci, vodoravno drsenje poglavij, pismo uredništvu |
+| Revija | revija: žig, kazalo, stolpci, vodoravno drsenje poglavij, pismo uredništvu |
 | Brutalistično | navpični trak, lepljive kartice, trakovi, premakljive nalepke |
 
 Skupne funkcije: iskalnik `Ctrl/Cmd + K` (ali `/`), krožni prehod med temami (View Transitions), skrivnost Konami koda.
@@ -41,7 +41,7 @@ Nova tema: mapa `themes/<ime>/` z `Shell.tsx`, `Home.tsx`, `index.ts`, vpis v `t
 
 ## Struktura
 
-- `contexts/` teme (minimal, arcade, luksuzno, retro terminal), jezik (SL/EN), `translations.ts`
+- `contexts/` teme (minimal, arcade, revija, brutalistično), jezik (SL/EN), `translations.ts`
 - `components/demo/` konfigurator in demo trgovina
 - `data/projects.ts` seznam referenc (sem dodajajte nove projekte)
 - `api/contact.ts` + `lib/sendContact.ts` pošiljanje e-pošte (validacija, honeypot, omejitev zahtev)

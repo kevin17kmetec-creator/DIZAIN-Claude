@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ROUTES } from '../routes';
 
@@ -21,9 +21,6 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-end gap-3 text-sm">
           <a href="mailto:dizain.slo@gmail.com" className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-main)] transition-colors">
             <Mail size={16} /> dizain.slo@gmail.com
-          </a>
-          <a href="tel:+38670311260" className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-main)] transition-colors">
-            <Phone size={16} /> +386 70 311 260
           </a>
           <Link to={ROUTES.privacy} className="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors underline">
             {t.footer.privacy}
