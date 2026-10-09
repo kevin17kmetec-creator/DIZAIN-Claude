@@ -24,11 +24,11 @@ const Contact: React.FC = () => {
             <p className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed max-w-md mb-12 border-l border-[var(--border-color)] pl-6">{t.contact.subtitle}</p>
 
             <div className="flex flex-col gap-6">
-              <a href="mailto:dizain.slo@gmail.com" className="group flex items-center gap-4 text-[var(--text-main)] hover:text-[var(--text-secondary)] transition-colors">
+              <a href="mailto:info@dizainstudio.si" className="group flex items-center gap-4 text-[var(--text-main)] hover:text-[var(--text-secondary)] transition-colors">
                 <div className="keep-round w-12 h-12 rounded-full border border-[var(--border-color)] flex items-center justify-center group-hover:bg-[var(--text-main)] group-hover:text-[var(--bg-main)] transition-all">
                   <Mail size={20} />
                 </div>
-                <span className="text-lg md:text-xl font-display break-all">dizain.slo@gmail.com</span>
+                <span className="text-lg md:text-xl font-display break-all">info@dizainstudio.si</span>
               </a>
             </div>
           </motion.div>

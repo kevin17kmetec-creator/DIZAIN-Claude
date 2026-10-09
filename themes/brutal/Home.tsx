@@ -200,7 +200,7 @@ const SayHi: React.FC = () => {
       <div className="mt-10 grid lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-5">
           <Magnetic strength={0.2}>
-            <a href="mailto:dizain.slo@gmail.com" className="inline-block bg-[var(--text-main)] text-[var(--bg-tertiary)] font-display text-xl md:text-3xl px-6 py-5 border-[3px] border-[var(--text-main)] hard-shadow-lg hover:bg-[var(--accent-color)] hover:text-[var(--text-main)] transition-colors break-all">dizain.slo@gmail.com ↗</a>
+            <a href="mailto:info@dizainstudio.si" className="inline-block bg-[var(--text-main)] text-[var(--bg-tertiary)] font-display text-xl md:text-3xl px-6 py-5 border-[3px] border-[var(--text-main)] hard-shadow-lg hover:bg-[var(--accent-color)] hover:text-[var(--text-main)] transition-colors break-all">info@dizainstudio.si ↗</a>
           </Magnetic>
           <p className="mt-6 font-mono font-bold">Karantanska ulica 28, Maribor</p>
         </div>

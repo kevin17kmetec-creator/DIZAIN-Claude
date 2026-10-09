@@ -6,7 +6,7 @@ import { ROUTES } from '../routes';
 
 const NotFoundPage: React.FC = () => {
   const { t } = useLanguage();
-  usePageMeta(t.notFound.title, t.notFound.title);
+  usePageMeta(t.notFound.title, t.notFound.title, true);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 text-center">
       <h1 className="font-display text-6xl md:text-9xl font-bold text-[var(--text-main)]">404</h1>

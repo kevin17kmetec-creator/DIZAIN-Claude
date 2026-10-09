@@ -15,7 +15,7 @@ const ProjectPreviewPage: React.FC = () => {
   const [slow, setSlow] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useLanguage();
-  usePageMeta(project ? `${project.title} | DIZAIN` : t.meta.works.title, t.meta.works.description);
+  usePageMeta(project ? `${project.title} | DIZAIN` : t.meta.works.title, t.meta.works.description, true);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';

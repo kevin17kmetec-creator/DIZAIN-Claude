@@ -242,7 +242,7 @@ const sl = {
     title: 'Politika zasebnosti',
     updated: 'Nazadnje posodobljeno: oktober 2026',
     sections: [
-      { h: 'Upravljavec', p: 'DIZAIN, programiranje, prodaja in druge storitve, d.o.o., Karantanska ulica 28, 2000 Maribor, matična številka 9093494000. E-pošta: dizain.slo@gmail.com.' },
+      { h: 'Upravljavec', p: 'DIZAIN, programiranje, prodaja in druge storitve, d.o.o., Karantanska ulica 28, 2000 Maribor, matična številka 9093494000. E-pošta: info@dizainstudio.si.' },
       { h: 'Katere podatke obdelujemo in zakaj', p: 'Če izpolnite kontaktni obrazec, obdelamo ime, e-poštni naslov in vsebino sporočila. Uporabimo jih za odgovor na povpraševanje in pripravo ponudbe. Pravna podlaga so ukrepi na vašo zahtevo pred sklenitvijo pogodbe (b točka prvega odstavka 6. člena GDPR) in naš zakoniti interes za odgovarjanje na povpraševanja.' },
       { h: 'Kako pošiljamo sporočila', p: 'Sporočila iz obrazca se prek storitve Resend pošljejo na naš e-poštni naslov. Ponudnik lahko podatke obdeluje tudi zunaj Evropskega gospodarskega prostora v skladu z določili GDPR. Podatkov ne prodajamo in jih ne uporabljamo za oglaševanje.' },
       { h: 'Gostovanje in dnevniki', p: 'Stran gostuje pri ponudniku gostovanja. Strežnik lahko zaradi delovanja in varnosti beleži tehnične podatke obiska, kot sta IP naslov in čas dostopa.' },
@@ -635,7 +635,7 @@ const en: Translations = {
     title: 'Privacy policy',
     updated: 'Last updated: October 2026',
     sections: [
-      { h: 'Controller', p: 'DIZAIN, programiranje, prodaja in druge storitve, d.o.o., Karantanska ulica 28, 2000 Maribor, Slovenia, registration number 9093494000. Email: dizain.slo@gmail.com.' },
+      { h: 'Controller', p: 'DIZAIN, programiranje, prodaja in druge storitve, d.o.o., Karantanska ulica 28, 2000 Maribor, Slovenia, registration number 9093494000. Email: info@dizainstudio.si.' },
       { h: 'What data we process and why', p: 'If you fill in the contact form we process your name, email address and the content of your message. We use it to answer your inquiry and prepare a quote. The legal basis is steps taken at your request before entering into a contract (Article 6(1)(b) GDPR) and our legitimate interest in answering inquiries.' },
       { h: 'How messages are sent', p: 'Form messages are delivered to our email address through the Resend service. The provider may process data outside the European Economic Area in accordance with the GDPR. We do not sell data and do not use it for advertising.' },
       { h: 'Hosting and logs', p: 'The site is hosted with a hosting provider. For operation and security the server may record technical visit data such as the IP address and time of access.' },

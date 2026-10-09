@@ -14,8 +14,9 @@ export const COMPANY = {
   shareCapital: '7.500 EUR',
   register: 'Okrožno sodišče v Mariboru (vpis: 25. 3. 2022)',
   representative: 'Kevin Kmetec (direktor), Miha Lipovec (prokurist)',
-  email: 'dizain.slo@gmail.com',
-  website: 'https://dizain.agency',
+  email: 'info@dizainstudio.si',
+  website: 'https://dizainstudio.si',
+  // Glavna domena. dizainstudio.eu in www. preusmeri vercel.json (301).
   // Ali je podjetje zavezanec za DDV. Če ni, stran prikazuje cene brez razdelitve na neto in bruto.
   vatPayer: true,
 };

@@ -15,7 +15,7 @@ const inputClass =
 const labelClass = 'text-xs font-bold uppercase tracking-widest text-[var(--text-main)] mb-2 block';
 
 const ContactForm: React.FC<Props> = ({ initialProject = '', initialDetails = '' }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', project: initialProject, details: initialDetails, website: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -42,6 +42,7 @@ const ContactForm: React.FC<Props> = ({ initialProject = '', initialDetails = ''
           name: formData.name,
           email: formData.email,
           website: formData.website,
+          lang: language,
           message: `${t.contact.labels.project}: ${formData.project}\n\n${formData.details}`,
         }),
       });

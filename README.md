@@ -19,8 +19,10 @@ Project > Settings > Environment Variables (Production in Preview):
 | Ime | Obvezno | Opis |
 | --- | --- | --- |
 | `RESEND_API_KEY` | da | API ključ iz resend.com |
-| `CONTACT_TO_EMAIL` | da | naslov, kamor prihajajo povpraševanja (npr. dizain.slo@gmail.com) |
-| `CONTACT_FROM_EMAIL` | ne | pošiljatelj, npr. `DIZAIN <info@vasa-domena.si>`; domena mora biti preverjena v Resendu. Privzeto `onboarding@resend.dev` (samo testiranje) |
+| `CONTACT_TO_EMAIL` | ne | naslov, kamor prihajajo povpraševanja. Privzeto `info@dizainstudio.si` |
+| `CONTACT_FROM_EMAIL` | ne | pošiljatelj; domena mora biti preverjena v Resendu. Privzeto `DIZAIN <info@dizainstudio.si>` |
+
+Obrazec pošlje povpraševanje na `info@dizainstudio.si` (reply-to je naslov obiskovalca) in obiskovalcu pošlje potrditev v slovenščini ali angleščini.
 
 Ključev ni v kodi. `.env*` je v `.gitignore` (razen `.env.example`). Po spremembi spremenljivk je potreben nov deploy.
 

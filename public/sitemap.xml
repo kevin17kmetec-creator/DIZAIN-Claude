@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dizain.agency/</loc></url>
-  <url><loc>https://dizain.agency/reference</loc></url>
-  <url><loc>https://dizain.agency/storitve</loc></url>
-  <url><loc>https://dizain.agency/demo</loc></url>
-  <url><loc>https://dizain.agency/agencija</loc></url>
-  <url><loc>https://dizain.agency/kontakt</loc></url>
-  <url><loc>https://dizain.agency/zasebnost</loc></url>
-  <url><loc>https://dizain.agency/splosni-pogoji</loc></url>
-  <url><loc>https://dizain.agency/podjetje</loc></url>
+  <url><loc>https://dizainstudio.si/</loc><lastmod>2026-10-09</lastmod><priority>1.0</priority></url>
+  <url><loc>https://dizainstudio.si/storitve</loc><lastmod>2026-10-09</lastmod><priority>0.9</priority></url>
+  <url><loc>https://dizainstudio.si/reference</loc><lastmod>2026-10-09</lastmod><priority>0.9</priority></url>
+  <url><loc>https://dizainstudio.si/demo</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://dizainstudio.si/agencija</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://dizainstudio.si/kontakt</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://dizainstudio.si/zasebnost</loc><lastmod>2026-10-09</lastmod><priority>0.3</priority></url>
+  <url><loc>https://dizainstudio.si/splosni-pogoji</loc><lastmod>2026-10-09</lastmod><priority>0.3</priority></url>
+  <url><loc>https://dizainstudio.si/podjetje</loc><lastmod>2026-10-09</lastmod><priority>0.3</priority></url>
 </urlset>

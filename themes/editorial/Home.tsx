@@ -205,7 +205,7 @@ const Letter: React.FC = () => {
           <div className="text-[11px] uppercase tracking-[0.3em] font-bold text-[var(--accent-color)] mb-4">{t.nav.contact}</div>
           <h2 className="font-display italic text-5xl md:text-7xl text-[var(--text-main)] leading-[0.95] mb-6">{e.letter}</h2>
           <p className="font-display text-xl text-[var(--text-secondary)] mb-8">{e.letterSub}</p>
-          <address className="not-italic text-sm text-[var(--text-secondary)] space-y-1"><div>Karantanska ulica 28, 2000 Maribor</div><div><a href="mailto:dizain.slo@gmail.com" className="underline">dizain.slo@gmail.com</a></div></address>
+          <address className="not-italic text-sm text-[var(--text-secondary)] space-y-1"><div>Karantanska ulica 28, 2000 Maribor</div><div><a href="mailto:info@dizainstudio.si" className="underline">info@dizainstudio.si</a></div></address>
         </div>
         <div className="lg:col-span-7 bg-[var(--bg-main)] border border-[var(--text-main)] p-8 md:p-12 shadow-[10px_10px_0_0_rgba(28,26,23,0.12)]"><ContactForm /></div>
       </div>
