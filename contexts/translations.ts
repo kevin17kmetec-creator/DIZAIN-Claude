@@ -402,6 +402,7 @@ const sl = {
     },
   },
   notFound: { title: 'Strani ni mogoče najti', back: 'Nazaj na začetno stran' },
+  thanks: { eyebrow: 'Povpraševanje oddano', title: 'Hvala, vaše povpraševanje smo prejeli', text: 'Na vaš e-poštni naslov smo poslali potrditev. Oglasimo se vam v najkrajšem možnem času.', back: 'Nazaj na prvo stran' },
   meta: {
     home: { title: 'DIZAIN | Izdelava spletnih strani in digitalna agencija', description: 'DIZAIN izdeluje spletne strani, spletne trgovine in aplikacije po meri. Osnutek v manj kot 8 dneh, brezplačno.' },
     works: { title: 'Reference | DIZAIN', description: 'Izbrani projekti agencije DIZAIN: spletne strani in aplikacije po meri.' },
@@ -411,6 +412,7 @@ const sl = {
     contact: { title: 'Kontakt | DIZAIN', description: 'Zahtevajte brezplačen osnutek spletne strani. Maribor, Slovenija.' },
     privacy: { title: 'Zasebnost | DIZAIN', description: 'Politika zasebnosti spletne strani DIZAIN.' },
     terms: { title: 'Splošni pogoji | DIZAIN', description: 'Splošni pogoji za izdelavo spletnih strani, trgovin in aplikacij.' },
+    thanks: { title: 'Hvala | DIZAIN', description: 'Hvala za povpraševanje.' },
     company: { title: 'Podatki o podjetju | DIZAIN', description: 'Podatki o ponudniku storitev DIZAIN d.o.o.' },
   },
 };
@@ -795,6 +797,7 @@ const en: Translations = {
     },
   },
   notFound: { title: 'Page not found', back: 'Back to home' },
+  thanks: { eyebrow: 'Enquiry sent', title: 'Thank you, we have received your enquiry', text: 'We have sent a confirmation to your email address. We will get back to you as soon as possible.', back: 'Back to home page' },
   meta: {
     home: { title: 'DIZAIN | Web design and digital agency', description: 'DIZAIN builds custom websites, online stores and apps. A draft in under 8 days, free.' },
     works: { title: 'Work | DIZAIN', description: 'Selected projects by DIZAIN: custom websites and apps.' },
@@ -804,6 +807,7 @@ const en: Translations = {
     contact: { title: 'Contact | DIZAIN', description: 'Request a free website draft. Maribor, Slovenia.' },
     privacy: { title: 'Privacy | DIZAIN', description: 'Privacy policy of the DIZAIN website.' },
     terms: { title: 'Terms | DIZAIN', description: 'Terms and conditions for building websites, online stores and apps.' },
+    thanks: { title: 'Thank you | DIZAIN', description: 'Thank you for your enquiry.' },
     company: { title: 'Company details | DIZAIN', description: 'Details of the service provider DIZAIN d.o.o.' },
   },
 };

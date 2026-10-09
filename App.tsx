@@ -21,6 +21,7 @@ const DemoPage = lazy(() => import('./components/DemoPage'));
 const PrivacyPage = lazy(() => import('./components/PrivacyPage'));
 const TermsPage = lazy(() => import('./components/TermsPage'));
 const CompanyPage = lazy(() => import('./components/CompanyPage'));
+const ThanksPage = lazy(() => import('./components/ThanksPage'));
 const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
 const ProjectPreviewPage = lazy(() => import('./components/ProjectPreviewPage'));
 
@@ -61,6 +62,7 @@ const Layout: React.FC = () => {
         <Route path={ROUTES.privacy} element={<PrivacyPage />} />
         <Route path={ROUTES.terms} element={<TermsPage />} />
         <Route path={ROUTES.company} element={<CompanyPage />} />
+        <Route path={ROUTES.thanks} element={<ThanksPage />} />
         <Route path="/predogled/:id" element={<ProjectPreviewPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

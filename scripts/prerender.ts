@@ -8,7 +8,7 @@ import { COMPANY } from '../data/company.js';
 const t = translations.sl;
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const pages: { path: string; meta: { title: string; description: string }; h1: string }[] = [
+const pages: { path: string; meta: { title: string; description: string }; h1: string; noindex?: boolean }[] = [
   { path: ROUTES.home, meta: t.meta.home, h1: 'Izdelava spletnih strani, spletnih trgovin in aplikacij' },
   { path: ROUTES.works, meta: t.meta.works, h1: t.nav.work },
   { path: ROUTES.services, meta: t.meta.services, h1: t.nav.services },
@@ -17,6 +17,7 @@ const pages: { path: string; meta: { title: string; description: string }; h1: s
   { path: ROUTES.contact, meta: t.meta.contact, h1: t.nav.contact },
   { path: ROUTES.privacy, meta: t.meta.privacy, h1: t.meta.privacy.title.split(' | ')[0] },
   { path: ROUTES.terms, meta: t.meta.terms, h1: t.meta.terms.title.split(' | ')[0] },
+  { path: ROUTES.thanks, meta: t.meta.thanks, h1: t.thanks.title, noindex: true },
   { path: ROUTES.company, meta: t.meta.company, h1: t.meta.company.title.split(' | ')[0] },
 ];
 
@@ -43,6 +44,7 @@ for (const page of pages) {
   html = set(html, /(<link rel="canonical" href=")[^"]*/, `$1${url}`);
   html = set(html, /(<link rel="alternate" hreflang="sl" href=")[^"]*/, `$1${url}`);
   html = set(html, /(<link rel="alternate" hreflang="x-default" href=")[^"]*/, `$1${url}`);
+  if (page.noindex) html = set(html, /(<meta name="robots" content=")[^"]*/, '$1noindex, nofollow');
   // Vsebina za iskalnike in bralnike zaslona; React jo ob zagonu zamenja z aplikacijo.
   const fallback = `<div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"><header><a href="/">DIZAIN</a> <nav>${nav}</nav></header><main><h1>${esc(page.h1)}</h1><p>${desc}</p></main><footer>${esc(COMPANY.shortName)}, ${esc(COMPANY.street)}, ${COMPANY.postalCode} ${esc(COMPANY.city)} · <a href="mailto:${COMPANY.email}">${COMPANY.email}</a></footer></div>`;
   html = html.replace('<div id="root"></div>', `<div id="root">${fallback}</div>`);

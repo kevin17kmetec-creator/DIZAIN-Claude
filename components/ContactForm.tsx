@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -16,6 +16,7 @@ const labelClass = 'text-xs font-bold uppercase tracking-widest text-[var(--text
 
 const ContactForm: React.FC<Props> = ({ initialProject = '', initialDetails = '' }) => {
   const { t, language } = useLanguage();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', project: initialProject, details: initialDetails, website: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -57,8 +58,7 @@ const ContactForm: React.FC<Props> = ({ initialProject = '', initialDetails = ''
       }
 
       setStatus('success');
-      setFormData({ name: '', email: '', project: '', details: '', website: '' });
-      setTimeout(() => setStatus('idle'), 6000);
+      navigate(ROUTES.thanks);
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error && error.message ? error.message : t.contact.errorGeneric);
