@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
-import { sendContact } from './lib/sendContact';
+import { sendContact } from './lib/sendContact.js';
 
 // Lokalni razvojni strežnik. Na Vercelu se uporablja api/contact.ts.
 async function startServer() {
