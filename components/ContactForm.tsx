@@ -43,6 +43,8 @@ const ContactForm: React.FC<Props> = ({ initialProject = '', initialDetails = ''
           email: formData.email,
           website: formData.website,
           lang: language,
+          project: formData.project,
+          details: formData.details,
           message: `${t.contact.labels.project}: ${formData.project}\n\n${formData.details}`,
         }),
       });

@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { inquiryEmail, confirmationEmail } from './emailTemplates.js';
 
 export interface ContactPayload {
   name?: unknown;
@@ -6,16 +7,17 @@ export interface ContactPayload {
   message?: unknown;
   website?: unknown; // honeypot
   lang?: unknown;
+  project?: unknown;
+  details?: unknown;
 }
 
 export type ContactResult = { status: number; body: Record<string, unknown> };
 
-const escapeHtml = (s: string) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-
 // Naslova pripadata preverjeni domeni dizainstudio.si v Resendu. Z okoljskima spremenljivkama ju je mogoče prepisati.
 const DEFAULT_TO = 'info@dizainstudio.si';
 const DEFAULT_FROM = 'DIZAIN <info@dizainstudio.si>';
+
+const oneLine = (s: string) => s.replace(/[\r\n]+/g, ' ');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -32,32 +34,6 @@ const rateLimited = (key: string) => {
   return recent.length > MAX_HITS;
 };
 
-const confirmationHtml = (lang: 'sl' | 'en', name: string, message: string) => {
-  const t =
-    lang === 'en'
-      ? {
-          hi: `Hello ${escapeHtml(name)},`,
-          body: 'thank you for your enquiry. We have received it and will reply within one working day.',
-          copy: 'A copy of your message:',
-          sign: 'Best regards,<br/>DIZAIN team',
-        }
-      : {
-          hi: `Pozdravljeni, ${escapeHtml(name)},`,
-          body: 'hvala za povpraševanje. Prejeli smo ga in se vam oglasimo v enem delovnem dnevu.',
-          copy: 'Kopija vašega sporočila:',
-          sign: 'Lep pozdrav,<br/>ekipa DIZAIN',
-        };
-  return `
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#111">
-      <p>${t.hi}</p>
-      <p>${t.body}</p>
-      <p style="margin-top:24px;color:#555">${t.copy}</p>
-      <blockquote style="margin:0;padding:8px 16px;border-left:3px solid #ccc;color:#333">${escapeHtml(message).replace(/\n/g, '<br/>')}</blockquote>
-      <p style="margin-top:24px">${t.sign}</p>
-      <p style="color:#888;font-size:12px">DIZAIN d.o.o., Karantanska ulica 28, 2000 Maribor · info@dizainstudio.si · dizainstudio.si</p>
-    </div>`;
-};
-
 export async function sendContact(payload: ContactPayload, clientKey: string): Promise<ContactResult> {
   // Honeypot: bots fill hidden field. Pretend success.
   if (typeof payload.website === 'string' && payload.website.trim() !== '') {
@@ -71,6 +47,8 @@ export async function sendContact(payload: ContactPayload, clientKey: string): P
   const name = typeof payload.name === 'string' ? payload.name.trim() : '';
   const email = typeof payload.email === 'string' ? payload.email.trim() : '';
   const message = typeof payload.message === 'string' ? payload.message.trim() : '';
+  const project = typeof payload.project === 'string' ? payload.project.trim().slice(0, 200) : '';
+  const details = typeof payload.details === 'string' && payload.details.trim() ? payload.details.trim() : message;
 
   if (!name || !email || !message) {
     return { status: 400, body: { error: 'Izpolnite vsa polja.' } };
@@ -91,17 +69,15 @@ export async function sendContact(payload: ContactPayload, clientKey: string): P
 
   try {
     const resend = new Resend(apiKey);
+    const inq = inquiryEmail({ name, email, project, details });
+    const conf = confirmationEmail(lang, { name, email, project, details });
     const result = await resend.emails.send({
       from,
       to,
       replyTo: email,
-      subject: `Novo sporočilo od ${name.replace(/[\r\n]/g, ' ')}`,
-      html: `
-        <p><strong>Ime:</strong> ${escapeHtml(name)}</p>
-        <p><strong>E-pošta:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Sporočilo:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>
-      `,
+      subject: `Novo povpraševanje: ${oneLine(project || name)} (${oneLine(name)})`,
+      html: inq.html,
+      text: inq.text,
     });
     if (result.error) {
       console.error('Resend API error:', result.error);
@@ -114,8 +90,9 @@ export async function sendContact(payload: ContactPayload, clientKey: string): P
         from,
         to: email,
         replyTo: to,
-        subject: lang === 'en' ? 'We received your message | DIZAIN' : 'Prejeli smo vaše sporočilo | DIZAIN',
-        html: confirmationHtml(lang, name, message),
+        subject: conf.subject,
+        html: conf.html,
+        text: conf.text,
       });
       if (copy.error) console.error('Resend confirmation error:', copy.error);
     } catch (err) {
